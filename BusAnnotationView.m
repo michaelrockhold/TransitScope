@@ -53,7 +53,8 @@ static CGRect		s_image_rect;
 + (NSString*)reuseIdentifierForAnnotation:(id<MKAnnotation>)ann
 {
 	Bus* bus = (Bus*)ann;
-	return [NSString stringWithFormat:@"SLT_RID:Bus:f%c:rt%@:hd%@", ([bus isEqual:g_Model.followedBus] ? 'y' : 'n'), bus.route.ID, bus.heading];
+	return [NSString stringWithFormat:@"SLT_RID:Bus:f%c:rt%@:hd%f",
+            ([bus isEqual:g_Model.followedBus] ? 'y' : 'n'), bus.route.ID, bus.heading];
 }
 
 

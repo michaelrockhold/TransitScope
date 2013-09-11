@@ -304,8 +304,8 @@ cleanup:
 									Content:[XPathNode CreateFromXmlNodePtr:attribute->children Parent:nil]];
 			[resultNode addAttribute:attr];
 			[attr release];
-			
-		} while (attribute = attribute->next);
+			attribute = attribute->next;
+		} while ( attribute );
 	}
 	
 	xmlNodePtr childNode = pNode->children;
@@ -314,8 +314,8 @@ cleanup:
 		do
 		{
 			[resultNode addChild:[XPathNode CreateFromXmlNodePtr:childNode Parent:resultNode]];
-
-		} while (childNode = childNode->next);		
+            childNode = childNode->next;
+		} while ( childNode );		
 	}
 	
 	return resultNode;

@@ -37,6 +37,7 @@
 		4C86964A10C706E8007E7545 /* RouteSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C86964910C706E8007E7545 /* RouteSettings.png */; };
 		4CB40E6517E044FE0031978E /* SoapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6217E044FE0031978E /* SoapFunction.m */; };
 		4CB40E6617E044FE0031978E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6417E044FE0031978E /* XPathQuery.m */; };
+		4CB40E6817E04B0E0031978E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB40E6717E04B0E0031978E /* Default-568h@2x.png */; };
 		4CBE6E191006C152007C26A4 /* SLTAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */; };
 		4CBE6E491006C1C6007C26A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E451006C1C6007C26A4 /* MapKit.framework */; };
 		4CBE6E4B1006C1C6007C26A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E471006C1C6007C26A4 /* CoreLocation.framework */; };
@@ -101,6 +102,7 @@
 		4CB40E6217E044FE0031978E /* SoapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFunction.m; sourceTree = "<group>"; };
 		4CB40E6317E044FE0031978E /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		4CB40E6417E044FE0031978E /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		4CB40E6717E04B0E0031978E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4CBE6E171006C152007C26A4 /* SLTAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTAnnotationView.h; sourceTree = "<group>"; };
 		4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTAnnotationView.m; sourceTree = "<group>"; };
 		4CBE6E451006C1C6007C26A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -151,6 +153,7 @@
 		29B97314FDCFA39411CA2CEA /* BusDetector-Seattle */ = {
 			isa = PBXGroup;
 			children = (
+				4CB40E6717E04B0E0031978E /* Default-568h@2x.png */,
 				4CBE6E0C1006C133007C26A4 /* Model */,
 				4CBE7185100A4C1C007C26A4 /* Controllers */,
 				4CBE6E161006C152007C26A4 /* Views */,
@@ -370,6 +373,7 @@
 				4C50D99610BD01F600FDC305 /* GoBack.png in Resources */,
 				4C86964A10C706E8007E7545 /* RouteSettings.png in Resources */,
 				4C44B3FD10D03E7900D25947 /* TransitScope.png in Resources */,
+				4CB40E6817E04B0E0031978E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

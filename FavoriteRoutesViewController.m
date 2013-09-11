@@ -46,7 +46,7 @@ extern NSObject<Model>* g_Model;
 		{
 			for (Bus* b in m_route.buses)
 			{
-				CLLocationDistance d = [b.position getDistanceFrom:refLoc];
+				CLLocationDistance d = [b.position distanceFromLocation:refLoc];
 			
 				if ( d < m_distanceToReferenceLocation ) m_distanceToReferenceLocation = d;
 			}

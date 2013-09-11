@@ -80,7 +80,7 @@ ResponseNamespace:(NSString*)responseNamespace
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:m_url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:timeout];
 	[request addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 	[request addValue:m_soapAction forHTTPHeaderField:@"SOAPAction"];
-	[request addValue:[NSString stringWithFormat:@"%lu", [msgData length]] forHTTPHeaderField:@"Content-Length"];
+	[request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)[msgData length]] forHTTPHeaderField:@"Content-Length"];
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:msgData];
 	

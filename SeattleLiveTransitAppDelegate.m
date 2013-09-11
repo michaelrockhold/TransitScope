@@ -20,7 +20,9 @@ NSObject<Model>* g_Model = nil;
 
 BOOL s_dieAlready = NO;
 
-@interface SeattleLiveTransitAppDelegate (PrivateMethods)
+@interface SeattleLiveTransitAppDelegate ()
+
+@property (nonatomic, retain, readwrite)	NSMutableDictionary*	allPossibleRoutes;
 
 -(void)cleanUpStaleBuses:(id)dummy;
 -(void)centerOfMapChanged:(NSNotification*)notification;
@@ -137,13 +139,13 @@ NSInteger routeSorter(id r1, id r2, void* context)
     [m_window addSubview:m_rootTabBarController.view];
 	[m_window makeKeyAndVisible];
 	
-	if ( !m_locationManager.locationServicesEnabled )
+	if ( [CLLocationManager locationServicesEnabled] )
     {
-			//[self addTextToLog:NSLocalizedString(@"NoLocationServices", @"User disabled location services")];
+		[m_locationManager startUpdatingLocation];
     }
     else
     {
-		[m_locationManager startUpdatingLocation];
+        //[self addTextToLog:NSLocalizedString(@"NoLocationServices", @"User disabled location services")];
     }
 		
 	[NSThread detachNewThreadSelector:@selector(busDownloaderThread:) toTarget:self withObject:nil];
@@ -296,7 +298,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		if ( oldRoutes && oldRoutes.count )
 		{
 			[m_allPossibleRoutes release];
-			m_allPossibleRoutes = [oldRoutes retain];
+			m_allPossibleRoutes = [[oldRoutes mutableCopy] retain];
 		}		
 	}
 	else
@@ -443,7 +445,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		if ( matchingBuses.count > 1 )
 			NSLog(@"WARNING in updateBusInfo: more than one bus with ID == %@\n", vehicleID);
 		bus = [matchingBuses anyObject];
-		CLLocationDistance distanceTraveled = [bus.position getDistanceFrom:location];
+		CLLocationDistance distanceTraveled = [bus.position distanceFromLocation:location];
 		NSTimeInterval timePassed = [timestamp timeIntervalSinceDate:bus.timestamp];
 		double speed = distanceTraveled/timePassed;
 		if ( isnan(speed) ) speed = 0;		
