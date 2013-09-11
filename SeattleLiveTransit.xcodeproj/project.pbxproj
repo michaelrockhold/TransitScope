@@ -29,14 +29,14 @@
 		4C573C08103604C5003DF446 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C573C07103604C5003DF446 /* Localizable.strings */; };
 		4C573D2F10361AF0003DF446 /* RouteDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C573D2D10361AF0003DF446 /* RouteDetailController.m */; };
 		4C6AD69D103E26DD00C40E3F /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AD69C103E26DD00C40E3F /* Route.m */; };
-		4C73411E10AE1A88004819FC /* SoapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73411C10AE1A88004819FC /* SoapFunction.m */; };
-		4C73411F10AE1A88004819FC /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73411D10AE1A88004819FC /* XPathQuery.m */; };
 		4C7344D110B0E968004819FC /* TimetablesPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7344CF10B0E968004819FC /* TimetablesPageController.m */; };
 		4C7344D210B0E968004819FC /* TimetablesPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7344D010B0E968004819FC /* TimetablesPageController.xib */; };
 		4C7347A110B37504004819FC /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73479F10B37504004819FC /* Bus.m */; };
 		4C7347C910B378B2004819FC /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7347C810B378B2004819FC /* Annotation.m */; };
 		4C7587E11086350300521D69 /* SLTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7587E01086350300521D69 /* SLTMapView.m */; };
 		4C86964A10C706E8007E7545 /* RouteSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C86964910C706E8007E7545 /* RouteSettings.png */; };
+		4CB40E6517E044FE0031978E /* SoapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6217E044FE0031978E /* SoapFunction.m */; };
+		4CB40E6617E044FE0031978E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6417E044FE0031978E /* XPathQuery.m */; };
 		4CBE6E191006C152007C26A4 /* SLTAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */; };
 		4CBE6E491006C1C6007C26A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E451006C1C6007C26A4 /* MapKit.framework */; };
 		4CBE6E4B1006C1C6007C26A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E471006C1C6007C26A4 /* CoreLocation.framework */; };
@@ -86,10 +86,6 @@
 		4C573D2D10361AF0003DF446 /* RouteDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDetailController.m; sourceTree = "<group>"; };
 		4C6AD69B103E26DD00C40E3F /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		4C6AD69C103E26DD00C40E3F /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
-		4C73411C10AE1A88004819FC /* SoapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoapFunction.m; path = ../../SoapSupportLib/SoapFunction.m; sourceTree = SOURCE_ROOT; };
-		4C73411D10AE1A88004819FC /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = ../../SoapSupportLib/XPathQuery.m; sourceTree = SOURCE_ROOT; };
-		4C73412010AE1ABC004819FC /* SoapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoapFunction.h; path = ../../SoapSupportLib/Headers/SoapFunction.h; sourceTree = SOURCE_ROOT; };
-		4C73412110AE1ABC004819FC /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = ../../SoapSupportLib/Headers/XPathQuery.h; sourceTree = SOURCE_ROOT; };
 		4C7344CE10B0E968004819FC /* TimetablesPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetablesPageController.h; sourceTree = "<group>"; };
 		4C7344CF10B0E968004819FC /* TimetablesPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetablesPageController.m; sourceTree = "<group>"; };
 		4C7344D010B0E968004819FC /* TimetablesPageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimetablesPageController.xib; sourceTree = "<group>"; };
@@ -101,6 +97,10 @@
 		4C7587E01086350300521D69 /* SLTMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTMapView.m; sourceTree = "<group>"; };
 		4C758A7E1087A66600521D69 /* BusInfoCollectionOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusInfoCollectionOwner.h; sourceTree = "<group>"; };
 		4C86964910C706E8007E7545 /* RouteSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RouteSettings.png; sourceTree = "<group>"; };
+		4CB40E6117E044FE0031978E /* SoapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapFunction.h; sourceTree = "<group>"; };
+		4CB40E6217E044FE0031978E /* SoapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFunction.m; sourceTree = "<group>"; };
+		4CB40E6317E044FE0031978E /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		4CB40E6417E044FE0031978E /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		4CBE6E171006C152007C26A4 /* SLTAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTAnnotationView.h; sourceTree = "<group>"; };
 		4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTAnnotationView.m; sourceTree = "<group>"; };
 		4CBE6E451006C1C6007C26A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -173,6 +173,10 @@
 				4CE5929D10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.h */,
 				4CE5929E10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.m */,
 				28A0AB4B0D9B1048005BE974 /* SeattleLiveTransit_Prefix.pch */,
+				4CB40E6117E044FE0031978E /* SoapFunction.h */,
+				4CB40E6217E044FE0031978E /* SoapFunction.m */,
+				4CB40E6317E044FE0031978E /* XPathQuery.h */,
+				4CB40E6417E044FE0031978E /* XPathQuery.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -248,17 +252,6 @@
 			name = "Web Views";
 			sourceTree = "<group>";
 		};
-		4C73411B10AE1A47004819FC /* Soap Library */ = {
-			isa = PBXGroup;
-			children = (
-				4C73412010AE1ABC004819FC /* SoapFunction.h */,
-				4C73412110AE1ABC004819FC /* XPathQuery.h */,
-				4C73411C10AE1A88004819FC /* SoapFunction.m */,
-				4C73411D10AE1A88004819FC /* XPathQuery.m */,
-			);
-			name = "Soap Library";
-			sourceTree = "<group>";
-		};
 		4CBE6E0C1006C133007C26A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +301,6 @@
 				4CBE71BB100A4EB4007C26A4 /* BusInfoCollector.h */,
 				4CBE71BC100A4EB4007C26A4 /* BusInfoCollector.m */,
 				4C758A7E1087A66600521D69 /* BusInfoCollectionOwner.h */,
-				4C73411B10AE1A47004819FC /* Soap Library */,
 			);
 			name = "Data Collection";
 			sourceTree = "<group>";
@@ -338,9 +330,16 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SeattleLiveTransit" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* BusDetector-Seattle */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -395,14 +394,14 @@
 				4C7587E11086350300521D69 /* SLTMapView.m in Sources */,
 				4CF92167109A30D00019F80A /* RouteViewPreferencesViewController.m in Sources */,
 				4C28746310AD2772008BE73C /* FavoriteRoutesViewController.m in Sources */,
-				4C73411E10AE1A88004819FC /* SoapFunction.m in Sources */,
-				4C73411F10AE1A88004819FC /* XPathQuery.m in Sources */,
 				4C7344D110B0E968004819FC /* TimetablesPageController.m in Sources */,
 				4C7347A110B37504004819FC /* Bus.m in Sources */,
 				4C7347C910B378B2004819FC /* Annotation.m in Sources */,
 				4C50D91910BB855600FDC305 /* AdvisoriesPageController.m in Sources */,
 				4C50D9E710BDBFF200FDC305 /* AgencyPageController.m in Sources */,
 				4C44B12910C9C92700D25947 /* Utils.m in Sources */,
+				4CB40E6517E044FE0031978E /* SoapFunction.m in Sources */,
+				4CB40E6617E044FE0031978E /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,35 +411,21 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../SoapSupportLib/build/Debug-iphonesimulator\"",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = TransitScope;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../SoapSupportLib/build/Debug-iphonesimulator\"",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = TransitScope;
 			};
 			name = Release;
@@ -450,32 +435,21 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/include/libxml2/",
-					"$(SRCROOT)/../../SoapSupportLib/Headers",
-				);
-				PREBINDING = NO;
+				HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.0;
-				SYMROOT = /Users/michael/Projects/build;
+				SDKROOT = iphoneos;
 			};
 			name = Distribution;
 		};
 		4C3D683B10DD6C6800942675 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../SoapSupportLib/build/Debug-iphonesimulator\"",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = TransitScope;
 			};
 			name = Distribution;
@@ -484,19 +458,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/include/libxml2/",
-					"$(SRCROOT)/../../SoapSupportLib/Headers",
-				);
+				HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.0;
-				SYMROOT = /Users/michael/Projects/build;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -504,18 +472,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Rockhold (D2464NT9W8)";
-				GCC_C_LANGUAGE_STANDARD = c99;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(SDKROOT)/usr/include/libxml2/",
-					"$(SRCROOT)/../../SoapSupportLib/Headers",
-				);
-				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF534DE6-3626-42F4-B48B-CC22CE56CC45";
-				SDKROOT = iphoneos3.0;
-				SYMROOT = /Users/michael/Projects/build;
+				HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
