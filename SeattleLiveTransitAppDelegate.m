@@ -22,7 +22,7 @@ BOOL s_dieAlready = NO;
 
 @interface SeattleLiveTransitAppDelegate ()
 
-@property (nonatomic, retain, readwrite)	NSMutableDictionary*	allPossibleRoutes;
+@property (nonatomic, strong, readwrite)	NSMutableDictionary*	allPossibleRoutes;
 
 -(void)cleanUpStaleBuses:(id)dummy;
 -(void)centerOfMapChanged:(NSNotification*)notification;
@@ -90,11 +90,11 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		m_centerOfMap = nil;
 		m_followedBus = nil;
 				
-		m_buses = [[NSMutableSet setWithCapacity:300] retain];
+		m_buses = [NSMutableSet setWithCapacity:300];
 		
-		m_knownRoutePredicate = [[NSPredicate predicateWithFormat:@"known == TRUE"] retain];
+		m_knownRoutePredicate = [NSPredicate predicateWithFormat:@"known == TRUE"];
 		
-		m_allPossibleRoutes = [[NSMutableDictionary dictionaryWithCapacity:300] retain];
+		m_allPossibleRoutes = [NSMutableDictionary dictionaryWithCapacity:300];
 		for (int r = 1; r < 600; r++)
 			[self addRoute:r];
 		for (int r = 900; r < 1000; r++)
@@ -109,24 +109,6 @@ NSInteger routeSorter(id r1, id r2, void* context)
 	return self;
 }
 
-- (void)dealloc
-{
-    [m_rootTabBarController release];
-    [m_window release];
-	[m_mapViewController release];
-	[m_locationManager release];
-
-	[m_outOfService release];
-	[m_currentLocation release];
-	[m_centerOfMap release];
-	[m_followedBus release];
-	
-	[m_buses release];
-	[m_allPossibleRoutes release];
-	[m_knownRoutePredicate release];
-	
-	[super dealloc];
-}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -164,39 +146,37 @@ NSInteger routeSorter(id r1, id r2, void* context)
 	NSString* routeID = [NSString stringWithFormat:@"%d", routeIDNum];
 	Route* route = [[Route alloc] initWithRouteID:routeID];
 	[m_allPossibleRoutes setObject:route forKey:routeID];
-	[route release];
 }
 
 -(void)busDownloaderThread:(id)dummy
 {
-	NSAutoreleasePool* localPool = [[NSAutoreleasePool alloc] init];	
-	BusInfoCollector* busInfoCollector = [[BusInfoCollector alloc] initWithCollectionOwner:self routeIDs:nil];
-	int i = 0;
-	
-	while ( !s_dieAlready )
-	{
-		NSAutoreleasePool* innerPool = [[NSAutoreleasePool alloc] init];
-		NSMutableArray* routes = [[[m_allPossibleRoutes allValues] mutableCopy] autorelease];
-		[routes makeObjectsPerformSelector:@selector(recalculateScore)];
-		[routes sortUsingSelector:@selector(compareByScore:)];
+	@autoreleasepool {	
+		BusInfoCollector* busInfoCollector = [[BusInfoCollector alloc] initWithCollectionOwner:self routeIDs:nil];
+		int i = 0;
 		
-		if ( routes && routes.count )
-		{			
-			Route* r = [routes objectAtIndex:routes.count-1];
-			
-			[busInfoCollector queueRoute:[NSNumber numberWithInt:[r.ID intValue]]];
-			r.lastQueryTimestamp = [NSDate date];
-		}
-		i++;
-		if ( i == 16 )
+		while ( !s_dieAlready )
 		{
-			[self performSelectorOnMainThread:@selector(cleanUpStaleBuses:) withObject:nil waitUntilDone:NO];
-			i = 0;
+			@autoreleasepool {
+				NSMutableArray* routes = [[m_allPossibleRoutes allValues] mutableCopy];
+				[routes makeObjectsPerformSelector:@selector(recalculateScore)];
+				[routes sortUsingSelector:@selector(compareByScore:)];
+				
+				if ( routes && routes.count )
+				{			
+					Route* r = [routes objectAtIndex:routes.count-1];
+					
+					[busInfoCollector queueRoute:[NSNumber numberWithInt:[r.ID intValue]]];
+					r.lastQueryTimestamp = [NSDate date];
+				}
+				i++;
+				if ( i == 16 )
+				{
+					[self performSelectorOnMainThread:@selector(cleanUpStaleBuses:) withObject:nil waitUntilDone:NO];
+					i = 0;
+				}
+			}
 		}
-		[innerPool release];
 	}
-	[busInfoCollector release];
-	[localPool release];
 }
 
 -(void)followBusByID:(NSString*)busID
@@ -256,7 +236,6 @@ NSInteger routeSorter(id r1, id r2, void* context)
 	[archiver encodeObject:m_allPossibleRoutes forKey:@"AllPossibleRoutes"];
 	[archiver finishEncoding];
 	[data writeToFile:[self pathToSavedData] atomically:YES];
-	[archiver release];
 }
 
 -(void)restore
@@ -269,7 +248,6 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		CLLocation* centerOfMap = [unarchiver decodeObjectForKey:@"CenterOfMap"];
 		Bus* followedBus = [unarchiver decodeObjectForKey:@"FollowedBus"];
 		NSDictionary* oldRoutes = [unarchiver decodeObjectForKey:@"AllPossibleRoutes"];
-		[unarchiver release];
 		
 		if ( centerOfMap )
 		{
@@ -297,8 +275,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		
 		if ( oldRoutes && oldRoutes.count )
 		{
-			[m_allPossibleRoutes release];
-			m_allPossibleRoutes = [[oldRoutes mutableCopy] retain];
+			m_allPossibleRoutes = [oldRoutes mutableCopy];
 		}		
 	}
 	else
@@ -437,7 +414,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		route.visible = !self.hideNewRoutesByDefault;
 	}
 	
-	CLLocation* location = [[[CLLocation alloc] initWithLatitude:latitude longitude:longitude] autorelease];
+	CLLocation* location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
 	Bus* bus = nil;
 	NSSet* matchingBuses = [m_buses filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"ID == %@", vehicleID]];
 	if ( matchingBuses.count > 0 )
@@ -459,11 +436,11 @@ NSInteger routeSorter(id r1, id r2, void* context)
 	else 
 	{
 			//NSLog(@"updateBusInfo creating new bus object for ID = %@ at %@\n", vehicleID, location);
-		bus = [[[Bus alloc] initWithVehicleID:vehicleID
+		bus = [[Bus alloc] initWithVehicleID:vehicleID
 										 route:route
 									  location:location
 									   heading:heading
-									 timestamp:timestamp] autorelease];
+									 timestamp:timestamp];
 		if ( !bus )
 		{
 			NSLog(@"ERROR creating new bus %@ in updateBusInfo\n", vehicleID);
@@ -486,7 +463,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 - (void)locationManager:(CLLocationManager*)manager
 	   didFailWithError:(NSError*)error
 {
-	NSMutableString* errorString = [[[NSMutableString alloc] init] autorelease];
+	NSMutableString* errorString = [[NSMutableString alloc] init];
     
 	if ([error domain] == kCLErrorDomain)
     {

@@ -41,24 +41,19 @@ const double cMapRowWidth = 300;
 {
 	if ( self = [self initWithStyle:UITableViewStyleGrouped] )
 	{
-		m_bus = [bus retain];
+		m_bus = bus;
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[m_bus release];
-    [super dealloc];
-}
 
 -(void)viewDidLoad
 {
 	[super viewDidLoad];
-	m_followThisBusSwitch = [[[UISwitch alloc] init] retain];
+	m_followThisBusSwitch = [[UISwitch alloc] init];
 	[m_followThisBusSwitch addTarget:self action:@selector(followingBusSwitchToggled:) forControlEvents:UIControlEventValueChanged];
 	
-	m_mapview = [[[SLTMapView alloc] initWithFrame:CGRectMake(0, 0, cMapRowWidth, cMapRowHeight)] retain];
+	m_mapview = [[SLTMapView alloc] initWithFrame:CGRectMake(0, 0, cMapRowWidth, cMapRowHeight)];
 	m_mapview.showsUserLocation = YES;
 	m_mapview.scrollEnabled = NO;
 	m_mapview.zoomEnabled = NO;
@@ -74,8 +69,6 @@ const double cMapRowWidth = 300;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[g_Model removeObserver:self forKeyPath:@"followedBus"];
 	[m_bus removeObserver:self forKeyPath:@"position"];
-	[m_mapview release];
-	[m_followThisBusSwitch release];
 	[super viewDidUnload];
 }
 
@@ -91,13 +84,12 @@ const double cMapRowWidth = 300;
     [self.tableView setContentOffset:CGPointZero animated:NO];
 	self.title = [NSString stringWithFormat:NSLocalizedString(@"VehicleInfo", @"Vehicle ID Number format"), m_bus.ID];
 	
-	m_updatePositionUpdateTimer = [[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePositionUpdateTime:) userInfo:nil repeats:YES] retain];
+	m_updatePositionUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePositionUpdateTime:) userInfo:nil repeats:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
 	[m_updatePositionUpdateTimer invalidate];
-	[m_updatePositionUpdateTimer release];
 	[super viewWillDisappear:animated];
 }
 
@@ -236,7 +228,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if ( cell == nil )
 	{
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 	}
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
@@ -386,7 +378,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 			if ( viewController )
 			{
 				[[self navigationController] pushViewController:viewController animated:YES];
-				[viewController release];
 			}
             break;
 			
@@ -401,7 +392,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]];
     if ( bav == nil )
-		bav = [[[BusAnnotationView alloc] initWithController:self bus:bus] autorelease];
+		bav = [[BusAnnotationView alloc] initWithController:self bus:bus];
 	return bav;
 }
 

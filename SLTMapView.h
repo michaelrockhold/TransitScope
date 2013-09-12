@@ -15,6 +15,6 @@
 	SEL m_mapViewRegionDidChangeAnimatedSelector;
 }
 
-@property (nonatomic, retain) IBOutlet NSObject* realDelegate;
+@property (nonatomic, strong) IBOutlet NSObject* realDelegate;
 
 @end

@@ -28,7 +28,7 @@
 - (void)followingBusSwitchToggled:(id)sender;
 - (void)recenterMap;
 
-@property (nonatomic, retain, readonly) SLTMapView* mapView;
+@property (nonatomic, strong, readonly) SLTMapView* mapView;
 
 - (MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView;
 

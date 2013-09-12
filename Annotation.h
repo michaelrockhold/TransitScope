@@ -18,7 +18,7 @@
 
 -(id)initWithLocation:(CLLocation*)location;
 
-@property (nonatomic, retain)			CLLocation* position;
+@property (nonatomic, strong)			CLLocation* position;
 @property (nonatomic, readonly)			BOOL visibleInMainMap;
 @property (nonatomic, readonly)			BOOL closeToCurrentLocation;
 

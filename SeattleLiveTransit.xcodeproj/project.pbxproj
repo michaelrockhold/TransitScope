@@ -415,6 +415,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
@@ -426,6 +427,7 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
@@ -450,6 +452,7 @@
 		4C3D683B10DD6C6800942675 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";

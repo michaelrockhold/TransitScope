@@ -19,5 +19,5 @@
 
 -(id)initWithController:(NSObject*)controller annotation:(id <MKAnnotation>)ann;
 
-@property (nonatomic, retain) NSObject* controller;
+@property (nonatomic, strong) NSObject* controller;
 @end

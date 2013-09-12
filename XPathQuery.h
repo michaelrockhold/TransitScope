@@ -43,19 +43,17 @@
 
 - (id)init;
 
-- (void)dealloc;
-
 - (void)appendContent:(NSString*)stuff;
 
 - (void)addChild:(XPathNode*)child;
 
 - (void)addAttribute:(XPathAttr*)attr;
 
-@property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic, readonly) NSString* content;
-@property (retain, nonatomic, readonly) NSArray* attributes;
-@property (retain, nonatomic, readonly) NSArray* children;
-@property (retain, nonatomic, readonly) NSDictionary* childrenAsDictionary;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic, readonly) NSString* content;
+@property (strong, nonatomic, readonly) NSArray* attributes;
+@property (strong, nonatomic, readonly) NSArray* children;
+@property (strong, nonatomic, readonly) NSDictionary* childrenAsDictionary;
 
 
 @end
@@ -68,10 +66,8 @@
 
 - (id)initWithName:(NSString*)name Content:(XPathNode*)node;
 
-- (void)dealloc;
-
-@property (retain, nonatomic, readonly) NSString* name;
-@property (retain, nonatomic, readonly) XPathNode* content;
+@property (strong, nonatomic, readonly) NSString* name;
+@property (strong, nonatomic, readonly) XPathNode* content;
 
 @end
 

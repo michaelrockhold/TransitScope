@@ -62,19 +62,16 @@ char* compassHeadings[] =
 
 -(void)dealloc
 {
-	self.ID = nil;
-	self.timestamp = nil;
 	self.route = nil;
-	[super dealloc];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
-	m_ID  = [[coder decodeObjectForKey:@"VehicleID"] retain];
+	m_ID  = [coder decodeObjectForKey:@"VehicleID"];
 	m_speed = [coder decodeDoubleForKey:@"Speed"];
 	m_heading = [coder decodeFloatForKey:@"Heading"];
-	m_timestamp = [[coder decodeObjectForKey:@"Timestamp"] retain];
+	m_timestamp = [coder decodeObjectForKey:@"Timestamp"];
 	m_route = nil;
     return self;
 }
@@ -143,7 +140,7 @@ char* compassHeadings[] =
 	
 	if ( route )
 	{
-		m_route = [route retain];
+		m_route = route;
 		[route addBus:self];
 	}
 	

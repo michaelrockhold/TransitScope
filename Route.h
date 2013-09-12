@@ -20,12 +20,12 @@
 	NSMutableSet* m_buses;
 }
 
-@property (nonatomic, retain, readonly) NSString* ID;
+@property (nonatomic, strong, readonly) NSString* ID;
 @property (nonatomic)					BOOL known;
 @property (nonatomic)					BOOL visible;
-@property (nonatomic, retain)			NSDate* lastQueryTimestamp;
+@property (nonatomic, strong)			NSDate* lastQueryTimestamp;
 @property (nonatomic, readonly)			NSUInteger score;
-@property (nonatomic, retain, readonly) NSSet* buses;
+@property (nonatomic, strong, readonly) NSSet* buses;
 
 -(id)initWithRouteID:(NSString*)routeID;
 

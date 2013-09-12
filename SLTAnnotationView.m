@@ -19,7 +19,7 @@ extern const char * class_getName(Class cls);
 {
 	if ( self = [self initWithAnnotation:ann reuseIdentifier:[SLTAnnotationView reuseIdentifierForAnnotation:ann]] )
 	{
-		m_controller = [controller retain];
+		m_controller = controller;
 		self.opaque = NO;
 		self.enabled = YES;
 		self.userInteractionEnabled = YES;
@@ -27,11 +27,6 @@ extern const char * class_getName(Class cls);
 	return self;
 }
 
-- (void)dealloc
-{
-	[m_controller release];
-	[super dealloc];
-}
 
 + (NSString*)reuseIdentifierForAnnotation:(id<MKAnnotation>)ann
 {

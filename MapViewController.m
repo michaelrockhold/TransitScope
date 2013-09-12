@@ -78,11 +78,6 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 
 @synthesize mapView = m_mapView;
 
-- (void)dealloc
-{
-	[m_rightBusCalloutButton release];
-	[super dealloc];
-}
 
 - (void)viewDidLoad
 {
@@ -95,11 +90,11 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 	self.navigationItem.rightBarButtonItem.target = self;
 	self.navigationItem.rightBarButtonItem.action = @selector(newFavorite:);		
 	
-	m_rightBusCalloutButton = [[UIButton buttonWithType:UIButtonTypeDetailDisclosure] retain];
+	m_rightBusCalloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
 	[self.mapView setRegion:[[NSUserDefaults standardUserDefaults] coordinateRegionForKey:MapViewCoordinateRegionKey] animated:TRUE];
 	CLLocationCoordinate2D center = self.mapView.centerCoordinate;
-	CLLocation* centerOfMap = [[[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude] autorelease];
+	CLLocation* centerOfMap = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude];
 	[[NSNotificationQueue defaultQueue]
 	 enqueueNotification:[NSNotification notificationWithName:MapViewCoordinateRegionKey object:centerOfMap]
 	 postingStyle:NSPostWhenIdle
@@ -355,7 +350,7 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 {
 	[[NSUserDefaults standardUserDefaults] setCoordinateRegion:self.mapView.region forKey:MapViewCoordinateRegionKey];
 	CLLocationCoordinate2D center = self.mapView.centerCoordinate;
-	CLLocation* centerOfMap = [[[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude] autorelease];
+	CLLocation* centerOfMap = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude];
 	[[NSNotificationQueue defaultQueue]
 	 enqueueNotification:[NSNotification notificationWithName:MapViewCoordinateRegionKey object:centerOfMap]
 	 postingStyle:NSPostASAP
@@ -369,7 +364,7 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 {
 	BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]];
     if ( bav == nil )
-		bav = [[[BusAnnotationView alloc] initWithController:self bus:bus] autorelease];
+		bav = [[BusAnnotationView alloc] initWithController:self bus:bus];
 	
 	return bav;
 }
@@ -378,7 +373,6 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 {
 	BusDetailViewController* busDetailViewController = [[BusDetailViewController alloc] initWithBus:bus];
 	[self.navigationController pushViewController:busDetailViewController animated:YES];
-	[busDetailViewController release];
 }
 
 - (NSNumber*)canShowCalloutForBus:(Bus*)bus

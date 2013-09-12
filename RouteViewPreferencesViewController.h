@@ -4,11 +4,11 @@
 
 @interface RouteViewPreferencesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-	id <RouteViewPreferencesViewControllerDelegate> delegate;
+	id <RouteViewPreferencesViewControllerDelegate> __weak delegate;
 	NSMutableArray* m_sortByChoices;
 }
 
-@property (nonatomic, assign) id <RouteViewPreferencesViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <RouteViewPreferencesViewControllerDelegate> delegate;
 - (IBAction)done;
 
 @end

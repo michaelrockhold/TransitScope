@@ -15,16 +15,11 @@
 {
     if ( self = [super initWithNibName:[self nibName] bundle:nil] )
 	{				
-		m_mainURL = [[NSURL URLWithString:[self urlString:[route.ID intValue]]] retain];
+		m_mainURL = [NSURL URLWithString:[self urlString:[route.ID intValue]]];
     }
     return self;
 }
 
-- (void)dealloc
-{
-	[m_mainURL release];
-    [super dealloc];
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {

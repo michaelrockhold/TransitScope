@@ -26,11 +26,6 @@ extern const char * class_getName(Class cls);
 }
 
 
-- (void)dealloc
-{
-	[m_realDelegate release];
-    [super dealloc];
-}
 
 -(void)awakeFromNib
 {
@@ -59,11 +54,16 @@ extern const char * class_getName(Class cls);
 		NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:sig];
 		[invocation setTarget:self.realDelegate];
 		[invocation setSelector:selector];
-		[invocation setArgument:&mapView atIndex:2];
-		[invocation setArgument:&view atIndex:3];
-		[invocation setArgument:&control atIndex:4];
-		id ann = view.annotation;
-		[invocation setArgument:&ann atIndex:5];
+        
+        __unsafe_unretained id uu_mapView = mapView;
+        __unsafe_unretained id uu_view = view;
+        __unsafe_unretained id uu_control = control;
+        __unsafe_unretained id uu_ann = view.annotation;
+        
+		[invocation setArgument:&uu_mapView atIndex:2];
+		[invocation setArgument:&uu_view atIndex:3];
+		[invocation setArgument:&uu_control atIndex:4];
+		[invocation setArgument:&uu_ann atIndex:5];
 		
 		[invocation invoke];
 	}

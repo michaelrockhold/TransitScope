@@ -24,8 +24,8 @@
 -(NSNumber*)canShowCalloutForBus:(Bus*)bus;
 -(UIView*)rightCalloutAccessoryViewForBus:(Bus*)bus;
 
-@property (nonatomic, retain) IBOutlet MKMapView* mapView;
-@property (nonatomic, retain, readonly) SeattleLiveTransitAppDelegate* model;
+@property (nonatomic, strong) IBOutlet MKMapView* mapView;
+@property (nonatomic, strong, readonly) SeattleLiveTransitAppDelegate* model;
 
 @end
 

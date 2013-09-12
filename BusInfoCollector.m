@@ -32,18 +32,12 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 {
 	if ( self = [self init] )
 	{
-		m_collectionOwner = [owner retain];
-		m_routeIDs = [routeIDs retain];
+		m_collectionOwner = owner;
+		m_routeIDs = routeIDs;
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[m_routeIDs release];
-	[m_collectionOwner release];
-	[super dealloc];
-}
 
 -(void)handleBusInfo:(id)di 
 {
@@ -97,9 +91,9 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 	[m_collectionOwner performSelectorOnMainThread:@selector(busInfoCollectorStartingCollectionPass:) withObject:self waitUntilDone:NO];
 	for (NSNumber* routeID in m_routeIDs)
 	{
-		NSAutoreleasePool* localPool = [[NSAutoreleasePool alloc] init];
-		[self queueRoute:routeID];		
-		[localPool release];
+		@autoreleasepool {
+			[self queueRoute:routeID];		
+		}
 	}
 	[m_collectionOwner performSelectorOnMainThread:@selector(busInfoCollectorEndCollectionPass:) withObject:self waitUntilDone:NO];
 }

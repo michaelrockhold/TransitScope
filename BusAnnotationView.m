@@ -28,14 +28,14 @@ static CGRect		s_image_rect;
 {
 	if (self == [BusAnnotationView class])
 	{
-		s_textFont =  [[UIFont boldSystemFontOfSize:10] retain];
+		s_textFont =  [UIFont boldSystemFontOfSize:10];
 		
 		CGSize textSize = [@"888" sizeWithFont:s_textFont];
 		s_textRect = CGRectMake(-textSize.width/2, -textSize.width/2, textSize.width, textSize.width);				
 		s_textRect.origin.y += 2; // just looks a bit better
 		
-		s_image = [[UIImage imageNamed:@"BusOnMap.png"] retain];
-		s_image_highlit = [[UIImage imageNamed:@"BusOnMap_highlit.png"] retain];
+		s_image = [UIImage imageNamed:@"BusOnMap.png"];
+		s_image_highlit = [UIImage imageNamed:@"BusOnMap_highlit.png"];
 		
 		CGSize image_size = [s_image size];
 		

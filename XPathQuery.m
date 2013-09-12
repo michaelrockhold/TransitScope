@@ -273,7 +273,7 @@ cleanup:
 
 + (XPathNode*) CreateFromXmlNodePtr:(void*)pXmlNodePtr Parent:(XPathNode*)parent
 {
-	XPathNode* resultNode = [[[XPathNode alloc] init] autorelease];
+	XPathNode* resultNode = [[XPathNode alloc] init];
 	
 	xmlNodePtr pNode = (xmlNodePtr)pXmlNodePtr;
 	
@@ -303,7 +303,6 @@ cleanup:
 			XPathAttr* attr = [[XPathAttr alloc] initWithName:[NSString stringWithCString:(const char *)attribute->name encoding:NSUTF8StringEncoding]
 									Content:[XPathNode CreateFromXmlNodePtr:attribute->children Parent:nil]];
 			[resultNode addAttribute:attr];
-			[attr release];
 			attribute = attribute->next;
 		} while ( attribute );
 	}
@@ -340,22 +339,13 @@ cleanup:
 	if ( self = [super init] )
 	{
 		self.name = nil;
-		m_content = [[NSMutableString string] retain];
-		m_attributes = [[NSMutableArray array] retain];
-		m_children = [[NSMutableArray array] retain];
+		m_content = [NSMutableString string];
+		m_attributes = [NSMutableArray array];
+		m_children = [NSMutableArray array];
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	self.name = nil;
-	[m_content release];
-	[m_attributes release];
-	[m_children release];
-
-	[super dealloc];
-}
 
 @end
 
@@ -367,18 +357,12 @@ cleanup:
 {
 	if ( self = [self init] )
 	{
-		m_name = [name retain];
-		m_content = [node retain];
+		m_name = name;
+		m_content = node;
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[m_name release];
-	[m_content release];
-	[super dealloc];
-}
 
 @end
 

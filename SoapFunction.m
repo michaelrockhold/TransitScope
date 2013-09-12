@@ -21,32 +21,19 @@ ResponseNamespace:(NSString*)responseNamespace
 {
 	if ( self = [self init] )
 	{
-		m_url = [[NSURL URLWithString:url] retain];
-		m_method = [method retain];
-		m_namespace = [ns retain];
-		m_soapAction = [soapAction retain];
-		m_reqHeaders = [[NSDictionary dictionaryWithObject:soapAction forKey:@"SOAPAction"] retain];
-		m_paramOrder = [paramOrder retain];
-		m_responseQuery = [responseQuery retain];
-		m_responsePrefix = [responsePrefix retain];
-		m_responseNamespace = [responseNamespace retain];
+		m_url = [NSURL URLWithString:url];
+		m_method = method;
+		m_namespace = ns;
+		m_soapAction = soapAction;
+		m_reqHeaders = [NSDictionary dictionaryWithObject:soapAction forKey:@"SOAPAction"];
+		m_paramOrder = paramOrder;
+		m_responseQuery = responseQuery;
+		m_responsePrefix = responsePrefix;
+		m_responseNamespace = responseNamespace;
 	}
 	return self;
 }
 
-- (void)dealloc
-{
-	[m_url release];
-	[m_method release];
-	[m_namespace release];
-	[m_soapAction release];
-	[m_paramOrder release];
-	[m_reqHeaders release];
-	[m_responseQuery release];
-	[m_responsePrefix release];
-	[m_responseNamespace release];
-	[super dealloc];
-}
 
 -(NSURLRequest*)makeRequest:(NSDictionary*)params timeout:(NSTimeInterval)timeout
 {

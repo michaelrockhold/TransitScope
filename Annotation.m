@@ -23,11 +23,6 @@ extern NSObject<Model>* g_Model;
 	return self;
 }
 
--(void)dealloc
-{
-	self.position = nil;
-	[super dealloc];
-}
 
 - (id)initWithCoder:(NSCoder *)coder
 {

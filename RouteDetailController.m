@@ -37,20 +37,14 @@
 {
 	if ( self = [self initWithStyle:UITableViewStyleGrouped] )
 	{		
-		m_route = [route retain];
-		m_showThisRouteSwitch = [[[UISwitch alloc] init] retain];
+		m_route = route;
+		m_showThisRouteSwitch = [[UISwitch alloc] init];
 		m_showThisRouteSwitch.on = route.visible;
 		[m_showThisRouteSwitch addTarget:self action:@selector(showRouteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
 	}
 	return self;
 }
 
--(void)dealloc
-{	
-	[m_route release];
-	[m_showThisRouteSwitch release];
-    [super dealloc];
-}
 
 
 -(void)viewWillAppear:(BOOL)animated
@@ -115,7 +109,7 @@
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if ( cell == nil )
 	{
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 	
     NSString* cellText = nil;
@@ -237,7 +231,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 			if ( viewController )
 			{
 				[[self navigationController] pushViewController:viewController animated:YES];
-				[viewController release];
 			}
 			}
             break;
