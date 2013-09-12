@@ -100,10 +100,10 @@ const double cMapRowWidth = 300;
 {
 	if ( [keyPath isEqual:@"followedBus"] )
 	{
-		if ( [[change objectForKey:NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeSetting )
+		if ( [change[NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeSetting )
 		{
-			id newAnn = [change objectForKey:NSKeyValueChangeNewKey];
-			id previousAnn = [change objectForKey:NSKeyValueChangeOldKey];
+			id newAnn = change[NSKeyValueChangeNewKey];
+			id previousAnn = change[NSKeyValueChangeOldKey];
 			
 			if ( [m_bus isEqual:newAnn] || [m_bus isEqual:previousAnn] )
 			{

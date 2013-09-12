@@ -25,7 +25,7 @@ ResponseNamespace:(NSString*)responseNamespace
 		m_method = method;
 		m_namespace = ns;
 		m_soapAction = soapAction;
-		m_reqHeaders = [NSDictionary dictionaryWithObject:soapAction forKey:@"SOAPAction"];
+		m_reqHeaders = @{@"SOAPAction": soapAction};
 		m_paramOrder = paramOrder;
 		m_responseQuery = responseQuery;
 		m_responsePrefix = responsePrefix;
@@ -85,13 +85,13 @@ ResponseNamespace:(NSString*)responseNamespace
 	}
 	@catch (NSException* e)
 	{
-		*error = [NSError errorWithDomain:@"com.rockholdco.SoapFunction" code:1 userInfo:[NSDictionary dictionaryWithObject:e forKey:@"exception"]];
+		*error = [NSError errorWithDomain:@"com.rockholdco.SoapFunction" code:1 userInfo:@{@"exception": e}];
 		returnedData = nil;
 	}
 	
 	if ( theHttpUrlResponse && [theHttpUrlResponse statusCode] != 200 )
 	{
-		*error = [NSError errorWithDomain:@"com.rockholdco.SoapFunction" code:2 userInfo:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:[theHttpUrlResponse statusCode]] forKey:@"httpstatuscode"]];
+		*error = [NSError errorWithDomain:@"com.rockholdco.SoapFunction" code:2 userInfo:@{@"httpstatuscode": @([theHttpUrlResponse statusCode])}];
 		returnedData = nil;
 	}
 	

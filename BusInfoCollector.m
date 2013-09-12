@@ -21,7 +21,7 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 															 Method:@"getLatestByRoute"
 														  Namespace:@"http://avl.transit.ws.its.washington.edu"
 														 SoapAction:@"getLatestByRoute"
-														 ParamOrder:[NSArray arrayWithObjects:@"in0", @"in1", nil]									
+														 ParamOrder:@[@"in0", @"in1"]									
 													  ResponseQuery:@"//multiRef"
 													 ResponsePrefix:nil
 												  ResponseNamespace:nil];
@@ -43,8 +43,8 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 {
 	NSDictionary* busDi = (NSDictionary*)di;
 		
-	NSString* vID = [busDi objectForKey:@"vehicleID"];
-	NSString* rID = [busDi objectForKey:@"routeID"];
+	NSString* vID = busDi[@"vehicleID"];
+	NSString* rID = busDi[@"routeID"];
 	
 	double latitude = [[busDi valueForKey:@"latitude"] doubleValue];
 	if ( latitude < 1.0 )
@@ -53,7 +53,7 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 	}
 	else
 	{
-		NSDate* timestamp = [NSDate dateWithTimeIntervalSince1970:[[busDi objectForKey:@"absoluteTime"] doubleValue]/1000];
+		NSDate* timestamp = [NSDate dateWithTimeIntervalSince1970:[busDi[@"absoluteTime"] doubleValue]/1000];
 		if ( [timestamp timeIntervalSinceNow] < -(7 * 60) )
 		{
 			NSLog(@"Stale data freshly downloaded: %@\n", timestamp);
@@ -65,8 +65,8 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 										  route:rID
 									   latitude:latitude
 									  longitude:[[busDi valueForKey:@"longitude"] doubleValue]
-										heading:[[busDi objectForKey:@"heading"] floatValue]
-									  timestamp:[NSDate dateWithTimeIntervalSince1970:[[busDi objectForKey:@"absoluteTime"] doubleValue]/1000]
+										heading:[busDi[@"heading"] floatValue]
+									  timestamp:[NSDate dateWithTimeIntervalSince1970:[busDi[@"absoluteTime"] doubleValue]/1000]
 			 ];
 		}
 	}
@@ -80,7 +80,7 @@ SoapFunction* s_currentBusesOnRouteFn = nil;
 -(void)queueRoute:(NSNumber*)routeID
 {
 	NSError* error = nil;
-	[s_currentBusesOnRouteFn Invoke:[NSDictionary dictionaryWithObjectsAndKeys:@"http://transit.metrokc.gov", @"in0", routeID, @"in1", nil] 
+	[s_currentBusesOnRouteFn Invoke:@{@"in0": @"http://transit.metrokc.gov", @"in1": routeID} 
 						nodeHandler:self 
 							timeout:3.0
 							  error:&error];

@@ -145,7 +145,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 {
 	NSString* routeID = [NSString stringWithFormat:@"%d", routeIDNum];
 	Route* route = [[Route alloc] initWithRouteID:routeID];
-	[m_allPossibleRoutes setObject:route forKey:routeID];
+	m_allPossibleRoutes[routeID] = route;
 }
 
 -(void)busDownloaderThread:(id)dummy
@@ -163,9 +163,9 @@ NSInteger routeSorter(id r1, id r2, void* context)
 				
 				if ( routes && routes.count )
 				{			
-					Route* r = [routes objectAtIndex:routes.count-1];
+					Route* r = routes[routes.count-1];
 					
-					[busInfoCollector queueRoute:[NSNumber numberWithInt:[r.ID intValue]]];
+					[busInfoCollector queueRoute:@([r.ID intValue])];
 					r.lastQueryTimestamp = [NSDate date];
 				}
 				i++;
@@ -217,7 +217,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 - (NSString*)applicationSupportDirectory
 {	
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSString *basePath = ([paths count] > 0) ? paths[0] : nil;
     return basePath;
 }
 
@@ -398,7 +398,7 @@ NSInteger routeSorter(id r1, id r2, void* context)
 		NSLog(@"   INFO: timestamp is %lf seconds in the future\n", interval);
 	}
 		
-	Route* route = [m_allPossibleRoutes objectForKey:routeID];
+	Route* route = m_allPossibleRoutes[routeID];
 	if ( route == nil )
 	{
 		NSLog(@"ERROR: update for non-existent route object with ID = %@", routeID);

@@ -69,7 +69,7 @@ NSString* SortRoutesKey = @"SLT_SortRoutesByDefaultKey";
 	
 	NSUInteger choiceIndex = (NSUInteger)[[NSUserDefaults standardUserDefaults] integerForKey:SortRoutesKey];
 
-    cell.textLabel.text = [m_sortByChoices objectAtIndex:indexPath.row];
+    cell.textLabel.text = m_sortByChoices[indexPath.row];
 	cell.accessoryType = ( choiceIndex == indexPath.row ) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }

@@ -15,10 +15,10 @@
 {	
 	NSMutableDictionary* rgnDict = [NSMutableDictionary dictionary];
 	
-	[rgnDict setObject:[NSNumber numberWithDouble:cr.center.latitude] forKey:@"latitude"];
-	[rgnDict setObject:[NSNumber numberWithDouble:cr.center.longitude] forKey:@"longitude"];
-	[rgnDict setObject:[NSNumber numberWithDouble:cr.span.latitudeDelta] forKey:@"latitudeDelta"];
-	[rgnDict setObject:[NSNumber numberWithDouble:cr.span.longitudeDelta] forKey:@"longitudeDelta"];
+	rgnDict[@"latitude"] = @(cr.center.latitude);
+	rgnDict[@"longitude"] = @(cr.center.longitude);
+	rgnDict[@"latitudeDelta"] = @(cr.span.latitudeDelta);
+	rgnDict[@"longitudeDelta"] = @(cr.span.longitudeDelta);
 
     [self setObject:rgnDict forKey:k];
 }
@@ -35,10 +35,10 @@
 	
 	if ( rgnDict != nil )
 	{
-		center.latitude = [[rgnDict objectForKey:@"latitude"] doubleValue];
-		center.longitude = [[rgnDict objectForKey:@"longitude"] doubleValue];
+		center.latitude = [rgnDict[@"latitude"] doubleValue];
+		center.longitude = [rgnDict[@"longitude"] doubleValue];
 		
-		rgn = MKCoordinateRegionMake(center, MKCoordinateSpanMake([[rgnDict objectForKey:@"latitudeDelta"] doubleValue], [[rgnDict objectForKey:@"longitudeDelta"] doubleValue]));
+		rgn = MKCoordinateRegionMake(center, MKCoordinateSpanMake([rgnDict[@"latitudeDelta"] doubleValue], [rgnDict[@"longitudeDelta"] doubleValue]));
 	}
     return rgn;
 }

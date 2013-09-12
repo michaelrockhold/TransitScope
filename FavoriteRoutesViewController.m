@@ -289,10 +289,10 @@ extern NSObject<Model>* g_Model;
 	{
 		RouteProxy* routeProxy = nil;
 		if ( !fSearching )
-			routeProxy = [self.routeProxyArray objectAtIndex:indexPath.row];
+			routeProxy = (self.routeProxyArray)[indexPath.row];
 		
 		Route* route = (Route*) ( fSearching
-								 ? [self.foundRoutesArray objectAtIndex:indexPath.row]
+								 ? (self.foundRoutesArray)[indexPath.row]
 								 : routeProxy.route);
 
 		cell = [tableView dequeueReusableCellWithIdentifier:s_RouteTableViewCellIdentifier];
@@ -346,10 +346,10 @@ extern NSObject<Model>* g_Model;
 	{
 		RouteProxy* routeProxy = nil;
 		if ( !fSearching )
-			routeProxy = [self.routeProxyArray objectAtIndex:indexPath.row];
+			routeProxy = (self.routeProxyArray)[indexPath.row];
 		
 		Route* route = (Route*) ( fSearching
-								 ? [self.foundRoutesArray objectAtIndex:indexPath.row]
+								 ? (self.foundRoutesArray)[indexPath.row]
 								 : routeProxy.route);
 		
 		UIViewController* viewController = [[RouteDetailController alloc] initWithRoute:route];	

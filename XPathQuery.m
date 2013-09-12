@@ -279,12 +279,12 @@ cleanup:
 	
 	if ( pNode->name )
 	{
-		resultNode.name = [NSString stringWithCString:(const char *)pNode->name encoding:NSUTF8StringEncoding];
+		resultNode.name = @((const char *)pNode->name);
 	}
 	
 	if ( pNode->content && pNode->content != (xmlChar *)-1 )
 	{
-		NSString *currentNodeContent = [NSString stringWithCString:(const char *)pNode->content encoding:NSUTF8StringEncoding];
+		NSString *currentNodeContent = @((const char *)pNode->content);
 		
 		if ( [resultNode.name isEqual:@"text"] && parent != nil )
 		{
@@ -300,7 +300,7 @@ cleanup:
 	{
 		do
 		{
-			XPathAttr* attr = [[XPathAttr alloc] initWithName:[NSString stringWithCString:(const char *)attribute->name encoding:NSUTF8StringEncoding]
+			XPathAttr* attr = [[XPathAttr alloc] initWithName:@((const char *)attribute->name)
 									Content:[XPathNode CreateFromXmlNodePtr:attribute->children Parent:nil]];
 			[resultNode addAttribute:attr];
 			attribute = attribute->next;

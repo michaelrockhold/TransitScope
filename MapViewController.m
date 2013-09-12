@@ -202,11 +202,11 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 
 -(void)shiftAnnotationAttributeDueToChange:(NSDictionary*)change
 {
-	NSNumber* kindOfChange = [change objectForKey:NSKeyValueChangeKindKey];
+	NSNumber* kindOfChange = change[NSKeyValueChangeKindKey];
 	if ( [kindOfChange intValue] == NSKeyValueChangeSetting )
 	{
-		id previousAnn = [change objectForKey:NSKeyValueChangeOldKey];
-		id newAnn = [change objectForKey:NSKeyValueChangeNewKey];
+		id previousAnn = change[NSKeyValueChangeOldKey];
+		id newAnn = change[NSKeyValueChangeNewKey];
 		
 		[self forceRedrawOfAnnotation:previousAnn];
 		[self forceRedrawOfAnnotation:newAnn];
@@ -271,15 +271,15 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 		}
 		else if ( [keyPath isEqualToString:@"routes"] )
 		{
-			NSNumber* changeKindKeyNumber = [change objectForKey:NSKeyValueChangeKindKey];
+			NSNumber* changeKindKeyNumber = change[NSKeyValueChangeKindKey];
 			switch ( [changeKindKeyNumber intValue] ) {
 					
 				case NSKeyValueChangeInsertion:
-					[self performSelectorOnMainThread:@selector(handleAdditionToRoutesList:) withObject:[change objectForKey:NSKeyValueChangeNewKey] waitUntilDone:NO];
+					[self performSelectorOnMainThread:@selector(handleAdditionToRoutesList:) withObject:change[NSKeyValueChangeNewKey] waitUntilDone:NO];
 					break;
 					
 				case NSKeyValueChangeRemoval:
-					[self loseInterestInRoutes:[change objectForKey:NSKeyValueChangeOldKey]];
+					[self loseInterestInRoutes:change[NSKeyValueChangeOldKey]];
 					break;
 					
 				default:
@@ -289,7 +289,7 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 	}
 	else if ( [object isKindOfClass:[Bus class]] )
 	{
-		id newValue = [change objectForKey:NSKeyValueChangeNewKey];
+		id newValue = change[NSKeyValueChangeNewKey];
 		
 		if ( [keyPath isEqualToString:@"position"] && newValue && ![newValue isEqual:[NSNull null]] )
 		{
@@ -304,15 +304,15 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 		}
 		else if ( [keyPath isEqualToString:@"buses"] )
 		{
-			NSNumber* changeKindKeyNumber = [change objectForKey:NSKeyValueChangeKindKey];
+			NSNumber* changeKindKeyNumber = change[NSKeyValueChangeKindKey];
 			switch ( [changeKindKeyNumber intValue] ) {
 					
 				case NSKeyValueChangeInsertion:
-					[self performSelectorOnMainThread:@selector(handleAdditionToBusesList:) withObject:[change objectForKey:NSKeyValueChangeNewKey] waitUntilDone:NO];
+					[self performSelectorOnMainThread:@selector(handleAdditionToBusesList:) withObject:change[NSKeyValueChangeNewKey] waitUntilDone:NO];
 					break;
 					
 				case NSKeyValueChangeRemoval:
-					[self loseInterestInBuses:[change objectForKey:NSKeyValueChangeOldKey]];
+					[self loseInterestInBuses:change[NSKeyValueChangeOldKey]];
 					break;
 					
 				default:
@@ -377,7 +377,7 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 
 - (NSNumber*)canShowCalloutForBus:(Bus*)bus
 {
-	return [NSNumber numberWithBool:YES];
+	return @YES;
 }
 
 - (UIView*)rightCalloutAccessoryViewForBus:(Bus*)bus 
