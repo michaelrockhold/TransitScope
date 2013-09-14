@@ -33,12 +33,10 @@
 		4C7344D210B0E968004819FC /* TimetablesPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7344D010B0E968004819FC /* TimetablesPageController.xib */; };
 		4C7347A110B37504004819FC /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73479F10B37504004819FC /* Bus.m */; };
 		4C7347C910B378B2004819FC /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7347C810B378B2004819FC /* Annotation.m */; };
-		4C7587E11086350300521D69 /* SLTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7587E01086350300521D69 /* SLTMapView.m */; };
 		4C86964A10C706E8007E7545 /* RouteSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C86964910C706E8007E7545 /* RouteSettings.png */; };
 		4CB40E6517E044FE0031978E /* SoapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6217E044FE0031978E /* SoapFunction.m */; };
 		4CB40E6617E044FE0031978E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6417E044FE0031978E /* XPathQuery.m */; };
 		4CB40E6817E04B0E0031978E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB40E6717E04B0E0031978E /* Default-568h@2x.png */; };
-		4CBE6E191006C152007C26A4 /* SLTAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */; };
 		4CBE6E491006C1C6007C26A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E451006C1C6007C26A4 /* MapKit.framework */; };
 		4CBE6E4B1006C1C6007C26A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E471006C1C6007C26A4 /* CoreLocation.framework */; };
 		4CBE718F100A4C39007C26A4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE718B100A4C39007C26A4 /* MapViewController.m */; };
@@ -94,8 +92,6 @@
 		4C73479F10B37504004819FC /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
 		4C7347C710B378B2004819FC /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		4C7347C810B378B2004819FC /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
-		4C7587DF1086350300521D69 /* SLTMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTMapView.h; sourceTree = "<group>"; };
-		4C7587E01086350300521D69 /* SLTMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTMapView.m; sourceTree = "<group>"; };
 		4C758A7E1087A66600521D69 /* BusInfoCollectionOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusInfoCollectionOwner.h; sourceTree = "<group>"; };
 		4C86964910C706E8007E7545 /* RouteSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RouteSettings.png; sourceTree = "<group>"; };
 		4CB40E6117E044FE0031978E /* SoapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapFunction.h; sourceTree = "<group>"; };
@@ -103,8 +99,6 @@
 		4CB40E6317E044FE0031978E /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		4CB40E6417E044FE0031978E /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		4CB40E6717E04B0E0031978E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		4CBE6E171006C152007C26A4 /* SLTAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTAnnotationView.h; sourceTree = "<group>"; };
-		4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTAnnotationView.m; sourceTree = "<group>"; };
 		4CBE6E451006C1C6007C26A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4CBE6E471006C1C6007C26A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4CBE718B100A4C39007C26A4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -272,14 +266,10 @@
 		4CBE6E161006C152007C26A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4CBE6E171006C152007C26A4 /* SLTAnnotationView.h */,
-				4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */,
 				4C04B49D1020BD53005EE11E /* BusAnnotationView.h */,
 				4C04B49E1020BD53005EE11E /* BusAnnotationView.m */,
 				4C04AB49103A0603000EE0A3 /* NotificationZoneView.h */,
 				4C04AB4A103A0603000EE0A3 /* NotificationZoneView.m */,
-				4C7587DF1086350300521D69 /* SLTMapView.h */,
-				4C7587E01086350300521D69 /* SLTMapView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -385,7 +375,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				4CBE6E191006C152007C26A4 /* SLTAnnotationView.m in Sources */,
 				4CBE718F100A4C39007C26A4 /* MapViewController.m in Sources */,
 				4CBE7190100A4C39007C26A4 /* SeattleLiveTransitAppDelegate.m in Sources */,
 				4CBE71BD100A4EB4007C26A4 /* BusInfoCollector.m in Sources */,
@@ -395,7 +384,6 @@
 				4C573D2F10361AF0003DF446 /* RouteDetailController.m in Sources */,
 				4C04AB4B103A0603000EE0A3 /* NotificationZoneView.m in Sources */,
 				4C6AD69D103E26DD00C40E3F /* Route.m in Sources */,
-				4C7587E11086350300521D69 /* SLTMapView.m in Sources */,
 				4CF92167109A30D00019F80A /* RouteViewPreferencesViewController.m in Sources */,
 				4C28746310AD2772008BE73C /* FavoriteRoutesViewController.m in Sources */,
 				4C7344D110B0E968004819FC /* TimetablesPageController.m in Sources */,

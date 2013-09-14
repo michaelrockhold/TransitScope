@@ -328,26 +328,33 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 }
 
 #pragma mark -
-#pragma mark MKMapViewDelegate/SLTMapViewDelegate methods
+#pragma mark MKMapViewDelegate methods
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)ann
 {
-	NSLog(@"- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView");
+    if ( [ann isKindOfClass:[Bus class]] ) {
+        
+        BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:(Bus*)ann]];
+        if ( bav == nil )
+            bav = [[BusAnnotationView alloc] initWithController:self bus:(Bus*)ann];
+        
+        return bav;
+    }
+    else {
+        return nil;
+    }
 }
 
-- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
-{
-	NSLog(@"- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView");
+- (void)mapView:(MKMapView*)mapView annotationView:(MKAnnotationView*)view calloutAccessoryControlTapped:(UIControl*)control {
+    
+	if ( [view.annotation isKindOfClass:[Bus class]] ) {
+        
+        [self.navigationController pushViewController:[[BusDetailViewController alloc] initWithBus:(Bus*)(view.annotation)] animated:YES];
+	}
 }
 
-- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error
-{
-	NSLog(@"- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:%@", error);
-}
-
-	// Is this lightweight enough? If not, we'll just save this when we're notified of app-end
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimatedIfNotNil:(NSObject*)animated
-{
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    
 	[[NSUserDefaults standardUserDefaults] setCoordinateRegion:self.mapView.region forKey:MapViewCoordinateRegionKey];
 	CLLocationCoordinate2D center = self.mapView.centerCoordinate;
 	CLLocation* centerOfMap = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude];
@@ -359,26 +366,6 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 }
 
 #pragma mark Bus Annotation Handlers
-
-- (MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView
-{
-	BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]];
-    if ( bav == nil )
-		bav = [[BusAnnotationView alloc] initWithController:self bus:bus];
-	
-	return bav;
-}
-
-- (void)mapView:(MKMapView*)mapView annotationView:(MKAnnotationView*)view calloutAccessoryControlTapped:(UIControl*)control forBus:(Bus*)bus
-{
-	BusDetailViewController* busDetailViewController = [[BusDetailViewController alloc] initWithBus:bus];
-	[self.navigationController pushViewController:busDetailViewController animated:YES];
-}
-
-- (NSNumber*)canShowCalloutForBus:(Bus*)bus
-{
-	return @YES;
-}
 
 - (UIView*)rightCalloutAccessoryViewForBus:(Bus*)bus 
 {

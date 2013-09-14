@@ -6,10 +6,14 @@
 //  Copyright 2009 The Rockhold Company. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+#import <MapKit/MKMapView.h>
+#import <MapKit/MKAnnotationView.h>
+#import <math.h>
 #import "BusAnnotationView.h"
+#import "MapViewController.h"
 #import "Bus.h"
 #import "Route.h"
-#import <math.h>
 #import "Model.h"
 
 extern NSObject<Model>* g_Model;
@@ -50,23 +54,39 @@ static CGRect		s_image_rect;
 	}
 }
 
-+ (NSString*)reuseIdentifierForAnnotation:(id<MKAnnotation>)ann
-{
-	Bus* bus = (Bus*)ann;
-	return [NSString stringWithFormat:@"SLT_RID:Bus:f%c:rt%@:hd%f",
-            ([bus isEqual:g_Model.followedBus] ? 'y' : 'n'), bus.route.ID, bus.heading];
-}
-
-
-- (id)initWithController:(NSObject*)controller bus:(Bus*)bus
-{
-	if ( self = [self initWithController:controller annotation:bus] )
+- (id)initWithController:(MapViewController*)controller bus:(Bus*)bus {
+    
+	if ( self = [self initWithAnnotation:bus reuseIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]] )
 	{
+		_controller = controller;
+		self.opaque = NO;
+		self.enabled = YES;
+		self.userInteractionEnabled = YES;
 		[self setFrame:CGRectMake(0, 0, s_frameSize.width, s_frameSize.height)];
 	}
 	return self;
 }
 
+- (BOOL)canShowCallout {
+    
+    return [self.annotation isKindOfClass:[Bus class]];
+}
+
+-(UIView*)leftCalloutAccessoryView {
+    
+    return nil;
+}
+
+- (UIView*)rightCalloutAccessoryView {
+    
+    return [self.controller rightCalloutAccessoryViewForBus:(Bus*)self.annotation];
+}
+
++ (NSString*)reuseIdentifierForAnnotation:(Bus*)bus {
+    
+	return [NSString stringWithFormat:@"SLT_RID:Bus:f%c:rt%@:hd%f",
+            ([bus isEqual:g_Model.followedBus] ? 'y' : 'n'), bus.route.ID, bus.heading];
+}
 
 CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180 / M_PI;};

@@ -12,7 +12,7 @@
 #import "Model.h"
 #import "RouteDetailController.h"
 #import "BusAnnotationView.h"
-#import "SLTMapView.h"
+#import <MapKit/MKMapView.h>
 
 extern NSObject<Model>* g_Model;
 
@@ -30,9 +30,11 @@ const double cMapViewBusInfoRowHeight = 24;
 const double cMapRowHeight = 148;
 const double cMapRowWidth = 300;
 
-@implementation BusDetailViewController
+@interface BusDetailViewController() <MKMapViewDelegate>
 
-@synthesize mapView = m_mapview;
+@end
+
+@implementation BusDetailViewController
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -53,11 +55,11 @@ const double cMapRowWidth = 300;
 	m_followThisBusSwitch = [[UISwitch alloc] init];
 	[m_followThisBusSwitch addTarget:self action:@selector(followingBusSwitchToggled:) forControlEvents:UIControlEventValueChanged];
 	
-	m_mapview = [[SLTMapView alloc] initWithFrame:CGRectMake(0, 0, cMapRowWidth, cMapRowHeight)];
+	m_mapview = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, cMapRowWidth, cMapRowHeight)];
+    m_mapview.delegate = self;
 	m_mapview.showsUserLocation = YES;
 	m_mapview.scrollEnabled = NO;
 	m_mapview.zoomEnabled = NO;
-	m_mapview.realDelegate = self;
 	[m_mapview addAnnotation:m_bus];
 	[self recenterMap];
 	[m_bus addObserver:self forKeyPath:@"position" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
@@ -385,15 +387,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             break;
     }
 	
-}
-
-#pragma mark Bus Annotation Handlers
-- (MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView
-{
-	BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]];
-    if ( bav == nil )
-		bav = [[BusAnnotationView alloc] initWithController:self bus:bus];
-	return bav;
 }
 
 @end
