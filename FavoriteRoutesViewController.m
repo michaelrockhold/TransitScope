@@ -26,7 +26,7 @@ extern NSObject<Model>* g_Model;
 -(NSComparisonResult)compareByRouteID:(RouteProxy*)other;
 
 @property (nonatomic, readonly) NSUInteger routeNumber;
-@property (nonatomic, strong, readonly) Route* route;
+@property (nonatomic, retain, readonly) Route* route;
 @property (nonatomic, readonly) CLLocationDistance distanceToReferenceLocation;
 @end
 
@@ -37,7 +37,7 @@ extern NSObject<Model>* g_Model;
 {
 	if ( self = [self init] )
 	{
-		m_route = route;
+		m_route = [route retain];
 		
 		m_routeNumber = [m_route.ID intValue];
 		
@@ -46,7 +46,7 @@ extern NSObject<Model>* g_Model;
 		{
 			for (Bus* b in m_route.buses)
 			{
-				CLLocationDistance d = [b.position distanceFromLocation:refLoc];
+				CLLocationDistance d = [b.position getDistanceFrom:refLoc];
 			
 				if ( d < m_distanceToReferenceLocation ) m_distanceToReferenceLocation = d;
 			}
@@ -55,6 +55,11 @@ extern NSObject<Model>* g_Model;
 	return self;
 }
 
+-(void)dealloc
+{
+	[m_route release];
+	[super dealloc];
+}
 
 -(NSComparisonResult)compareByDistanceToReferenceLocation:(RouteProxy*)other
 {
@@ -100,6 +105,12 @@ extern NSObject<Model>* g_Model;
 #pragma mark -
 #pragma mark View lifecycle
 
+-(void)dealloc
+{
+	[m_routeProxyArray release];
+	[m_foundRoutesArray release];
+	[super dealloc];
+}
 
 - (void)viewDidLoad
 {
@@ -191,6 +202,7 @@ extern NSObject<Model>* g_Model;
 	{
 		RouteProxy* rp = [[RouteProxy alloc] initWithRoute:r referenceLocation:self.referenceLocation];
 		[(NSMutableArray*)(self.routeProxyArray) addObject:rp];
+		[rp release];
 	}
 	
 	[(NSMutableArray*)(self.routeProxyArray) sortUsingSelector:(self.referenceLocation == nil ? @selector(compareByRouteID:) : @selector(compareByDistanceToReferenceLocation:))];	
@@ -289,16 +301,16 @@ extern NSObject<Model>* g_Model;
 	{
 		RouteProxy* routeProxy = nil;
 		if ( !fSearching )
-			routeProxy = (self.routeProxyArray)[indexPath.row];
+			routeProxy = [self.routeProxyArray objectAtIndex:indexPath.row];
 		
 		Route* route = (Route*) ( fSearching
-								 ? (self.foundRoutesArray)[indexPath.row]
+								 ? [self.foundRoutesArray objectAtIndex:indexPath.row]
 								 : routeProxy.route);
 
 		cell = [tableView dequeueReusableCellWithIdentifier:s_RouteTableViewCellIdentifier];
 		if ( cell == nil )
 		{
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:s_RouteTableViewCellIdentifier];
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:s_RouteTableViewCellIdentifier] autorelease];
 		}
 		
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -346,14 +358,15 @@ extern NSObject<Model>* g_Model;
 	{
 		RouteProxy* routeProxy = nil;
 		if ( !fSearching )
-			routeProxy = (self.routeProxyArray)[indexPath.row];
+			routeProxy = [self.routeProxyArray objectAtIndex:indexPath.row];
 		
 		Route* route = (Route*) ( fSearching
-								 ? (self.foundRoutesArray)[indexPath.row]
+								 ? [self.foundRoutesArray objectAtIndex:indexPath.row]
 								 : routeProxy.route);
 		
 		UIViewController* viewController = [[RouteDetailController alloc] initWithRoute:route];	
 		[[self navigationController] pushViewController:viewController animated:YES];
+		[viewController release];	
 	}			
 }
 
@@ -429,6 +442,7 @@ extern NSObject<Model>* g_Model;
     controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentModalViewController:controller animated:YES];
     
+    [controller release];
 }
 
 

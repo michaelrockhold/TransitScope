@@ -29,9 +29,9 @@ typedef NSInteger (*sortFn_t)(id, id, void *);
 
 -(IBAction)showInfo;
 
-@property (nonatomic, strong) UITableView* tableView;
-@property (nonatomic, strong) NSArray* routeProxyArray;
-@property (nonatomic, strong) NSArray* foundRoutesArray;
-@property (nonatomic, strong) CLLocation* referenceLocation;
+@property (nonatomic, retain) UITableView* tableView;
+@property (nonatomic, retain) NSArray* routeProxyArray;
+@property (nonatomic, retain) NSArray* foundRoutesArray;
+@property (nonatomic, retain) CLLocation* referenceLocation;
 
 @end

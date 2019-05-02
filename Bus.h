@@ -26,11 +26,11 @@
 			heading:(float)heading
 		  timestamp:(NSDate*)timestamp;
 
-@property (nonatomic, strong) NSString*		ID;
+@property (nonatomic, retain) NSString*		ID;
 @property (nonatomic) double				speed;
 @property (nonatomic) float					heading;
-@property (nonatomic, strong) NSDate*		timestamp;
-@property (nonatomic, strong) Route*		route;
+@property (nonatomic, retain) NSDate*		timestamp;
+@property (nonatomic, retain) Route*		route;
 
 @end
 

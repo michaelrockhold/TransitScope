@@ -78,6 +78,11 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 
 @synthesize mapView = m_mapView;
 
+- (void)dealloc
+{
+	[m_rightBusCalloutButton release];
+	[super dealloc];
+}
 
 - (void)viewDidLoad
 {
@@ -90,11 +95,11 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 	self.navigationItem.rightBarButtonItem.target = self;
 	self.navigationItem.rightBarButtonItem.action = @selector(newFavorite:);		
 	
-	m_rightBusCalloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+	m_rightBusCalloutButton = [[UIButton buttonWithType:UIButtonTypeDetailDisclosure] retain];
 
 	[self.mapView setRegion:[[NSUserDefaults standardUserDefaults] coordinateRegionForKey:MapViewCoordinateRegionKey] animated:TRUE];
 	CLLocationCoordinate2D center = self.mapView.centerCoordinate;
-	CLLocation* centerOfMap = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude];
+	CLLocation* centerOfMap = [[[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude] autorelease];
 	[[NSNotificationQueue defaultQueue]
 	 enqueueNotification:[NSNotification notificationWithName:MapViewCoordinateRegionKey object:centerOfMap]
 	 postingStyle:NSPostWhenIdle
@@ -202,11 +207,11 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 
 -(void)shiftAnnotationAttributeDueToChange:(NSDictionary*)change
 {
-	NSNumber* kindOfChange = change[NSKeyValueChangeKindKey];
+	NSNumber* kindOfChange = [change objectForKey:NSKeyValueChangeKindKey];
 	if ( [kindOfChange intValue] == NSKeyValueChangeSetting )
 	{
-		id previousAnn = change[NSKeyValueChangeOldKey];
-		id newAnn = change[NSKeyValueChangeNewKey];
+		id previousAnn = [change objectForKey:NSKeyValueChangeOldKey];
+		id newAnn = [change objectForKey:NSKeyValueChangeNewKey];
 		
 		[self forceRedrawOfAnnotation:previousAnn];
 		[self forceRedrawOfAnnotation:newAnn];
@@ -271,15 +276,15 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 		}
 		else if ( [keyPath isEqualToString:@"routes"] )
 		{
-			NSNumber* changeKindKeyNumber = change[NSKeyValueChangeKindKey];
+			NSNumber* changeKindKeyNumber = [change objectForKey:NSKeyValueChangeKindKey];
 			switch ( [changeKindKeyNumber intValue] ) {
 					
 				case NSKeyValueChangeInsertion:
-					[self performSelectorOnMainThread:@selector(handleAdditionToRoutesList:) withObject:change[NSKeyValueChangeNewKey] waitUntilDone:NO];
+					[self performSelectorOnMainThread:@selector(handleAdditionToRoutesList:) withObject:[change objectForKey:NSKeyValueChangeNewKey] waitUntilDone:NO];
 					break;
 					
 				case NSKeyValueChangeRemoval:
-					[self loseInterestInRoutes:change[NSKeyValueChangeOldKey]];
+					[self loseInterestInRoutes:[change objectForKey:NSKeyValueChangeOldKey]];
 					break;
 					
 				default:
@@ -289,7 +294,7 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 	}
 	else if ( [object isKindOfClass:[Bus class]] )
 	{
-		id newValue = change[NSKeyValueChangeNewKey];
+		id newValue = [change objectForKey:NSKeyValueChangeNewKey];
 		
 		if ( [keyPath isEqualToString:@"position"] && newValue && ![newValue isEqual:[NSNull null]] )
 		{
@@ -304,15 +309,15 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 		}
 		else if ( [keyPath isEqualToString:@"buses"] )
 		{
-			NSNumber* changeKindKeyNumber = change[NSKeyValueChangeKindKey];
+			NSNumber* changeKindKeyNumber = [change objectForKey:NSKeyValueChangeKindKey];
 			switch ( [changeKindKeyNumber intValue] ) {
 					
 				case NSKeyValueChangeInsertion:
-					[self performSelectorOnMainThread:@selector(handleAdditionToBusesList:) withObject:change[NSKeyValueChangeNewKey] waitUntilDone:NO];
+					[self performSelectorOnMainThread:@selector(handleAdditionToBusesList:) withObject:[change objectForKey:NSKeyValueChangeNewKey] waitUntilDone:NO];
 					break;
 					
 				case NSKeyValueChangeRemoval:
-					[self loseInterestInBuses:change[NSKeyValueChangeOldKey]];
+					[self loseInterestInBuses:[change objectForKey:NSKeyValueChangeOldKey]];
 					break;
 					
 				default:
@@ -328,36 +333,29 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 }
 
 #pragma mark -
-#pragma mark MKMapViewDelegate methods
+#pragma mark MKMapViewDelegate/SLTMapViewDelegate methods
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)ann
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-    if ( [ann isKindOfClass:[Bus class]] ) {
-        
-        BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:(Bus*)ann]];
-        if ( bav == nil )
-            bav = [[BusAnnotationView alloc] initWithController:self bus:(Bus*)ann];
-        
-        return bav;
-    }
-    else {
-        return nil;
-    }
+	NSLog(@"- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView");
 }
 
-- (void)mapView:(MKMapView*)mapView annotationView:(MKAnnotationView*)view calloutAccessoryControlTapped:(UIControl*)control {
-    
-	if ( [view.annotation isKindOfClass:[Bus class]] ) {
-        
-        [self.navigationController pushViewController:[[BusDetailViewController alloc] initWithBus:(Bus*)(view.annotation)] animated:YES];
-	}
+- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView
+{
+	NSLog(@"- (void)mapViewWillStartLoadingMap:(MKMapView *)mapView");
 }
 
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
+- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error
+{
+	NSLog(@"- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:%@", error);
+}
+
+	// Is this lightweight enough? If not, we'll just save this when we're notified of app-end
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimatedIfNotNil:(NSObject*)animated
+{
 	[[NSUserDefaults standardUserDefaults] setCoordinateRegion:self.mapView.region forKey:MapViewCoordinateRegionKey];
 	CLLocationCoordinate2D center = self.mapView.centerCoordinate;
-	CLLocation* centerOfMap = [[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude];
+	CLLocation* centerOfMap = [[[CLLocation alloc] initWithLatitude:center.latitude longitude:center.longitude] autorelease];
 	[[NSNotificationQueue defaultQueue]
 	 enqueueNotification:[NSNotification notificationWithName:MapViewCoordinateRegionKey object:centerOfMap]
 	 postingStyle:NSPostASAP
@@ -366,6 +364,27 @@ NSString* MapViewCoordinateRegionKey = @"mapviewcoordinateregion";
 }
 
 #pragma mark Bus Annotation Handlers
+
+- (MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView
+{
+	BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]];
+    if ( bav == nil )
+		bav = [[[BusAnnotationView alloc] initWithController:self bus:bus] autorelease];
+	
+	return bav;
+}
+
+- (void)mapView:(MKMapView*)mapView annotationView:(MKAnnotationView*)view calloutAccessoryControlTapped:(UIControl*)control forBus:(Bus*)bus
+{
+	BusDetailViewController* busDetailViewController = [[BusDetailViewController alloc] initWithBus:bus];
+	[self.navigationController pushViewController:busDetailViewController animated:YES];
+	[busDetailViewController release];
+}
+
+- (NSNumber*)canShowCalloutForBus:(Bus*)bus
+{
+	return [NSNumber numberWithBool:YES];
+}
 
 - (UIView*)rightCalloutAccessoryViewForBus:(Bus*)bus 
 {

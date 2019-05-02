@@ -29,20 +29,22 @@
 		4C573C08103604C5003DF446 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C573C07103604C5003DF446 /* Localizable.strings */; };
 		4C573D2F10361AF0003DF446 /* RouteDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C573D2D10361AF0003DF446 /* RouteDetailController.m */; };
 		4C6AD69D103E26DD00C40E3F /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6AD69C103E26DD00C40E3F /* Route.m */; };
+		4C73411E10AE1A88004819FC /* SoapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73411C10AE1A88004819FC /* SoapFunction.m */; };
+		4C73411F10AE1A88004819FC /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73411D10AE1A88004819FC /* XPathQuery.m */; };
 		4C7344D110B0E968004819FC /* TimetablesPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7344CF10B0E968004819FC /* TimetablesPageController.m */; };
 		4C7344D210B0E968004819FC /* TimetablesPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7344D010B0E968004819FC /* TimetablesPageController.xib */; };
 		4C7347A110B37504004819FC /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C73479F10B37504004819FC /* Bus.m */; };
 		4C7347C910B378B2004819FC /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7347C810B378B2004819FC /* Annotation.m */; };
+		4C7587E11086350300521D69 /* SLTMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7587E01086350300521D69 /* SLTMapView.m */; };
 		4C86964A10C706E8007E7545 /* RouteSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C86964910C706E8007E7545 /* RouteSettings.png */; };
-		4CB40E6517E044FE0031978E /* SoapFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6217E044FE0031978E /* SoapFunction.m */; };
-		4CB40E6617E044FE0031978E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB40E6417E044FE0031978E /* XPathQuery.m */; };
-		4CB40E6817E04B0E0031978E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CB40E6717E04B0E0031978E /* Default-568h@2x.png */; };
+		4CBE6E191006C152007C26A4 /* SLTAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */; };
 		4CBE6E491006C1C6007C26A4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E451006C1C6007C26A4 /* MapKit.framework */; };
 		4CBE6E4B1006C1C6007C26A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBE6E471006C1C6007C26A4 /* CoreLocation.framework */; };
 		4CBE718F100A4C39007C26A4 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE718B100A4C39007C26A4 /* MapViewController.m */; };
 		4CBE7190100A4C39007C26A4 /* SeattleLiveTransitAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE718E100A4C39007C26A4 /* SeattleLiveTransitAppDelegate.m */; };
 		4CBE71BD100A4EB4007C26A4 /* BusInfoCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE71BC100A4EB4007C26A4 /* BusInfoCollector.m */; };
 		4CCEF988101BAE2500EEBB32 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCEF987101BAE2500EEBB32 /* MapView.xib */; };
+		4CDB50E51380D24D0018EEB6 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CDB50E41380D24D0018EEB6 /* MainWindow-iPad.xib */; };
 		4CE5929F10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5929E10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.m */; };
 		4CF92166109A30D00019F80A /* RouteViewPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF92163109A30D00019F80A /* RouteViewPreferencesView.xib */; };
 		4CF92167109A30D00019F80A /* RouteViewPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF92165109A30D00019F80A /* RouteViewPreferencesViewController.m */; };
@@ -85,6 +87,10 @@
 		4C573D2D10361AF0003DF446 /* RouteDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDetailController.m; sourceTree = "<group>"; };
 		4C6AD69B103E26DD00C40E3F /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		4C6AD69C103E26DD00C40E3F /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		4C73411C10AE1A88004819FC /* SoapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoapFunction.m; path = ../../SoapSupportLib/SoapFunction.m; sourceTree = SOURCE_ROOT; };
+		4C73411D10AE1A88004819FC /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = ../../SoapSupportLib/XPathQuery.m; sourceTree = SOURCE_ROOT; };
+		4C73412010AE1ABC004819FC /* SoapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoapFunction.h; path = ../../SoapSupportLib/Headers/SoapFunction.h; sourceTree = SOURCE_ROOT; };
+		4C73412110AE1ABC004819FC /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = ../../SoapSupportLib/Headers/XPathQuery.h; sourceTree = SOURCE_ROOT; };
 		4C7344CE10B0E968004819FC /* TimetablesPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimetablesPageController.h; sourceTree = "<group>"; };
 		4C7344CF10B0E968004819FC /* TimetablesPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimetablesPageController.m; sourceTree = "<group>"; };
 		4C7344D010B0E968004819FC /* TimetablesPageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimetablesPageController.xib; sourceTree = "<group>"; };
@@ -92,13 +98,12 @@
 		4C73479F10B37504004819FC /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
 		4C7347C710B378B2004819FC /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		4C7347C810B378B2004819FC /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
+		4C7587DF1086350300521D69 /* SLTMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTMapView.h; sourceTree = "<group>"; };
+		4C7587E01086350300521D69 /* SLTMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTMapView.m; sourceTree = "<group>"; };
 		4C758A7E1087A66600521D69 /* BusInfoCollectionOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusInfoCollectionOwner.h; sourceTree = "<group>"; };
 		4C86964910C706E8007E7545 /* RouteSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RouteSettings.png; sourceTree = "<group>"; };
-		4CB40E6117E044FE0031978E /* SoapFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapFunction.h; sourceTree = "<group>"; };
-		4CB40E6217E044FE0031978E /* SoapFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFunction.m; sourceTree = "<group>"; };
-		4CB40E6317E044FE0031978E /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
-		4CB40E6417E044FE0031978E /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
-		4CB40E6717E04B0E0031978E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4CBE6E171006C152007C26A4 /* SLTAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLTAnnotationView.h; sourceTree = "<group>"; };
+		4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLTAnnotationView.m; sourceTree = "<group>"; };
 		4CBE6E451006C1C6007C26A4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4CBE6E471006C1C6007C26A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4CBE718B100A4C39007C26A4 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		4CBE71BB100A4EB4007C26A4 /* BusInfoCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusInfoCollector.h; sourceTree = "<group>"; };
 		4CBE71BC100A4EB4007C26A4 /* BusInfoCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusInfoCollector.m; sourceTree = "<group>"; };
 		4CCEF987101BAE2500EEBB32 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		4CDB50E41380D24D0018EEB6 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		4CE5929D10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MKCoordinateRegion.h"; sourceTree = "<group>"; };
 		4CE5929E10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+MKCoordinateRegion.m"; sourceTree = "<group>"; };
 		4CE59D881031F0EB0059C300 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
@@ -147,7 +153,6 @@
 		29B97314FDCFA39411CA2CEA /* BusDetector-Seattle */ = {
 			isa = PBXGroup;
 			children = (
-				4CB40E6717E04B0E0031978E /* Default-568h@2x.png */,
 				4CBE6E0C1006C133007C26A4 /* Model */,
 				4CBE7185100A4C1C007C26A4 /* Controllers */,
 				4CBE6E161006C152007C26A4 /* Views */,
@@ -170,10 +175,6 @@
 				4CE5929D10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.h */,
 				4CE5929E10220BDC0059C300 /* NSUserDefaults+MKCoordinateRegion.m */,
 				28A0AB4B0D9B1048005BE974 /* SeattleLiveTransit_Prefix.pch */,
-				4CB40E6117E044FE0031978E /* SoapFunction.h */,
-				4CB40E6217E044FE0031978E /* SoapFunction.m */,
-				4CB40E6317E044FE0031978E /* XPathQuery.h */,
-				4CB40E6417E044FE0031978E /* XPathQuery.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -189,6 +190,7 @@
 				4CF927DC109F63EC0019F80A /* SettingsMenuIcon.png */,
 				4C573C07103604C5003DF446 /* Localizable.strings */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
+				4CDB50E41380D24D0018EEB6 /* MainWindow-iPad.xib */,
 				4C115714107712B700B1B978 /* Reticle.png */,
 				4C86964910C706E8007E7545 /* RouteSettings.png */,
 				4C11570E1077129300B1B978 /* BusOnMap_highlit.png */,
@@ -249,6 +251,17 @@
 			name = "Web Views";
 			sourceTree = "<group>";
 		};
+		4C73411B10AE1A47004819FC /* Soap Library */ = {
+			isa = PBXGroup;
+			children = (
+				4C73412010AE1ABC004819FC /* SoapFunction.h */,
+				4C73412110AE1ABC004819FC /* XPathQuery.h */,
+				4C73411C10AE1A88004819FC /* SoapFunction.m */,
+				4C73411D10AE1A88004819FC /* XPathQuery.m */,
+			);
+			name = "Soap Library";
+			sourceTree = "<group>";
+		};
 		4CBE6E0C1006C133007C26A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,10 +279,14 @@
 		4CBE6E161006C152007C26A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE6E171006C152007C26A4 /* SLTAnnotationView.h */,
+				4CBE6E181006C152007C26A4 /* SLTAnnotationView.m */,
 				4C04B49D1020BD53005EE11E /* BusAnnotationView.h */,
 				4C04B49E1020BD53005EE11E /* BusAnnotationView.m */,
 				4C04AB49103A0603000EE0A3 /* NotificationZoneView.h */,
 				4C04AB4A103A0603000EE0A3 /* NotificationZoneView.m */,
+				4C7587DF1086350300521D69 /* SLTMapView.h */,
+				4C7587E01086350300521D69 /* SLTMapView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -294,6 +311,7 @@
 				4CBE71BB100A4EB4007C26A4 /* BusInfoCollector.h */,
 				4CBE71BC100A4EB4007C26A4 /* BusInfoCollector.m */,
 				4C758A7E1087A66600521D69 /* BusInfoCollectionOwner.h */,
+				4C73411B10AE1A47004819FC /* Soap Library */,
 			);
 			name = "Data Collection";
 			sourceTree = "<group>";
@@ -323,9 +341,6 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0460;
-			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SeattleLiveTransit" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -363,7 +378,7 @@
 				4C50D99610BD01F600FDC305 /* GoBack.png in Resources */,
 				4C86964A10C706E8007E7545 /* RouteSettings.png in Resources */,
 				4C44B3FD10D03E7900D25947 /* TransitScope.png in Resources */,
-				4CB40E6817E04B0E0031978E /* Default-568h@2x.png in Resources */,
+				4CDB50E51380D24D0018EEB6 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				4CBE6E191006C152007C26A4 /* SLTAnnotationView.m in Sources */,
 				4CBE718F100A4C39007C26A4 /* MapViewController.m in Sources */,
 				4CBE7190100A4C39007C26A4 /* SeattleLiveTransitAppDelegate.m in Sources */,
 				4CBE71BD100A4EB4007C26A4 /* BusInfoCollector.m in Sources */,
@@ -384,16 +400,17 @@
 				4C573D2F10361AF0003DF446 /* RouteDetailController.m in Sources */,
 				4C04AB4B103A0603000EE0A3 /* NotificationZoneView.m in Sources */,
 				4C6AD69D103E26DD00C40E3F /* Route.m in Sources */,
+				4C7587E11086350300521D69 /* SLTMapView.m in Sources */,
 				4CF92167109A30D00019F80A /* RouteViewPreferencesViewController.m in Sources */,
 				4C28746310AD2772008BE73C /* FavoriteRoutesViewController.m in Sources */,
+				4C73411E10AE1A88004819FC /* SoapFunction.m in Sources */,
+				4C73411F10AE1A88004819FC /* XPathQuery.m in Sources */,
 				4C7344D110B0E968004819FC /* TimetablesPageController.m in Sources */,
 				4C7347A110B37504004819FC /* Bus.m in Sources */,
 				4C7347C910B378B2004819FC /* Annotation.m in Sources */,
 				4C50D91910BB855600FDC305 /* AdvisoriesPageController.m in Sources */,
 				4C50D9E710BDBFF200FDC305 /* AgencyPageController.m in Sources */,
 				4C44B12910C9C92700D25947 /* Utils.m in Sources */,
-				4CB40E6517E044FE0031978E /* SoapFunction.m in Sources */,
-				4CB40E6617E044FE0031978E /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,24 +420,40 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SoapSupportLib/build/Debug-iphonesimulator\"",
+				);
 				PRODUCT_NAME = TransitScope;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SoapSupportLib/build/Debug-iphonesimulator\"",
+				);
 				PRODUCT_NAME = TransitScope;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -428,24 +461,41 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2/",
+					"$(SRCROOT)/../../SoapSupportLib/Headers",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos4.3;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SYMROOT = /Users/michael/Projects/build;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
 		};
 		4C3D683B10DD6C6800942675 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SeattleLiveTransit_Prefix.pch;
 				INFOPLIST_FILE = "SeattleLiveTransit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SoapSupportLib/build/Debug-iphonesimulator\"",
+				);
 				PRODUCT_NAME = TransitScope;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
 		};
@@ -453,13 +503,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2/",
+					"$(SRCROOT)/../../SoapSupportLib/Headers",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos4.3;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SYMROOT = /Users/michael/Projects/build;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -467,12 +528,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Rockhold (D2464NT9W8)";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SDKROOT)/usr/include/libxml2\"";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2/",
+					"$(SRCROOT)/../../SoapSupportLib/Headers",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF534DE6-3626-42F4-B48B-CC22CE56CC45";
+				SDKROOT = iphoneos4.3;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SYMROOT = /Users/michael/Projects/build;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

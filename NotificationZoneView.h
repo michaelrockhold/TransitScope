@@ -14,6 +14,6 @@
 	CGRect m_notificationZoneRect;
 }
 
-@property (nonatomic) CGRect notificationZoneRect;
+@property (nonatomic) IBOutlet CGRect notificationZoneRect;
 
 @end

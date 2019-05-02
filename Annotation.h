@@ -18,7 +18,9 @@
 
 -(id)initWithLocation:(CLLocation*)location;
 
-@property (nonatomic, strong)			CLLocation* position;
+@property (nonatomic, retain)			CLLocation* position;
+@property (nonatomic, retain, readonly) NSString* title;
+@property (nonatomic, retain, readonly) NSString* subtitle;
 @property (nonatomic, readonly)			BOOL visibleInMainMap;
 @property (nonatomic, readonly)			BOOL closeToCurrentLocation;
 

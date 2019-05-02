@@ -11,13 +11,14 @@
 @class Bus;
 @protocol Model;
 @class MKMapView;
+@class SLTMapView;
 @class MKAnnotationView;
 
 @interface BusDetailViewController : UITableViewController
 {
 	Bus* m_bus;
 	UISwitch* m_followThisBusSwitch;
-	MKMapView* m_mapview;
+	SLTMapView* m_mapview;
 	NSTimer* m_updatePositionUpdateTimer;
 }
 
@@ -27,6 +28,8 @@
 - (void)followingBusSwitchToggled:(id)sender;
 - (void)recenterMap;
 
-@property (nonatomic, strong, readonly) MKMapView* mapView;
+@property (nonatomic, retain, readonly) SLTMapView* mapView;
+
+- (MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView;
 
 @end

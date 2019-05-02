@@ -27,7 +27,7 @@ NSString* SortRoutesKey = @"SLT_SortRoutesByDefaultKey";
 {	
 	if ( self = [super initWithNibName:nibName bundle:nibBundle] )
 	{
-		m_sortByChoices = [NSMutableArray arrayWithCapacity:4];
+		m_sortByChoices = [[NSMutableArray arrayWithCapacity:4] retain];
 			// add these in order determined by eSortRoutes
 		[m_sortByChoices addObject:NSLocalizedString(@"SortByRteNum", "by route number")];
 		[m_sortByChoices addObject:NSLocalizedString(@"SortByProximityCurLoc", "by closest bus to present location")];
@@ -36,6 +36,11 @@ NSString* SortRoutesKey = @"SLT_SortRoutesByDefaultKey";
 	return self;
 }
 
+-(void)dealloc
+{
+	[m_sortByChoices release];
+	[super dealloc];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -64,12 +69,12 @@ NSString* SortRoutesKey = @"SLT_SortRoutesByDefaultKey";
     UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
     }
 	
 	NSUInteger choiceIndex = (NSUInteger)[[NSUserDefaults standardUserDefaults] integerForKey:SortRoutesKey];
 
-    cell.textLabel.text = m_sortByChoices[indexPath.row];
+    cell.textLabel.text = [m_sortByChoices objectAtIndex:indexPath.row];
 	cell.accessoryType = ( choiceIndex == indexPath.row ) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }

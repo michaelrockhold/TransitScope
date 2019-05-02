@@ -7,18 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MKMapView.h>
-#import <MapKit/MKAnnotationView.h>
+#import "SLTAnnotationView.h"
 
-@protocol Model;
 @class Bus;
-@class MapViewController;
 
-@interface BusAnnotationView : MKAnnotationView
+@interface BusAnnotationView : SLTAnnotationView
+{
 
-+(NSString*)reuseIdentifierForAnnotation:(Bus*)ann;
+}
 
--(id)initWithController:(MapViewController*)controller bus:(Bus*)bus;
+- (id)initWithController:(NSObject*)controller bus:(Bus*)bus;
 
-@property (nonatomic, strong) MapViewController* controller;
 @end

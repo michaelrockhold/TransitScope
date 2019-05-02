@@ -22,11 +22,11 @@ extern NSObject<Model>* g_Model;
 {
 	if ( self = [self init] )
 	{
-		m_ID = routeID;
+		m_ID = [routeID retain];
 		m_known = fKnown;
 		m_fShowOnMap = fVisible;
-		m_lastQueryTimestamp = lastQueried;
-		m_buses = [NSMutableSet setWithCapacity:1];
+		m_lastQueryTimestamp = [lastQueried retain];
+		m_buses = [[NSMutableSet setWithCapacity:1] retain];
 	}
 	return self;
 }
@@ -43,6 +43,13 @@ extern NSObject<Model>* g_Model;
 	return [self initWithRouteID:routeID known:NO visible:NO lastQueried:nil];
 }
 
+-(void)dealloc
+{
+	[m_buses release];
+	[m_ID release];
+	[m_lastQueryTimestamp release];
+	[super dealloc];
+}
 
 - (id)initWithCoder:(NSCoder *)coder
 {
@@ -116,7 +123,7 @@ extern NSObject<Model>* g_Model;
 	if ( self.visible )
 		m_score += 1;
 	
-	NSSet* buses = [self.buses copyWithZone:nil];
+	NSSet* buses = [[self.buses copyWithZone:nil] autorelease];
 	for (Bus* b in buses)
 	{
 		if ( b.visibleInMainMap )

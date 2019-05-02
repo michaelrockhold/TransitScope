@@ -19,10 +19,13 @@
 -(IBAction)changeLocationButtonHandler:(id)sender;
 
 // Bus annotation support
+-(void)mapView:(MKMapView*)mapView annotationView:(MKAnnotationView*)view calloutAccessoryControlTapped:(UIControl*)control forBus:(Bus*)bus;
+-(MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView;
+-(NSNumber*)canShowCalloutForBus:(Bus*)bus;
 -(UIView*)rightCalloutAccessoryViewForBus:(Bus*)bus;
 
-@property (nonatomic, strong) IBOutlet MKMapView* mapView;
-@property (nonatomic, strong, readonly) SeattleLiveTransitAppDelegate* model;
+@property (nonatomic, retain) IBOutlet MKMapView* mapView;
+@property (nonatomic, retain, readonly) SeattleLiveTransitAppDelegate* model;
 
 @end
 

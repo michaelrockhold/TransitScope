@@ -12,7 +12,7 @@
 #import "Model.h"
 #import "RouteDetailController.h"
 #import "BusAnnotationView.h"
-#import <MapKit/MKMapView.h>
+#import "SLTMapView.h"
 
 extern NSObject<Model>* g_Model;
 
@@ -30,11 +30,9 @@ const double cMapViewBusInfoRowHeight = 24;
 const double cMapRowHeight = 148;
 const double cMapRowWidth = 300;
 
-@interface BusDetailViewController() <MKMapViewDelegate>
-
-@end
-
 @implementation BusDetailViewController
+
+@synthesize mapView = m_mapview;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -43,23 +41,28 @@ const double cMapRowWidth = 300;
 {
 	if ( self = [self initWithStyle:UITableViewStyleGrouped] )
 	{
-		m_bus = bus;
+		m_bus = [bus retain];
 	}
 	return self;
 }
 
+- (void)dealloc
+{
+	[m_bus release];
+    [super dealloc];
+}
 
 -(void)viewDidLoad
 {
 	[super viewDidLoad];
-	m_followThisBusSwitch = [[UISwitch alloc] init];
+	m_followThisBusSwitch = [[[UISwitch alloc] init] retain];
 	[m_followThisBusSwitch addTarget:self action:@selector(followingBusSwitchToggled:) forControlEvents:UIControlEventValueChanged];
 	
-	m_mapview = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, cMapRowWidth, cMapRowHeight)];
-    m_mapview.delegate = self;
+	m_mapview = [[[SLTMapView alloc] initWithFrame:CGRectMake(0, 0, cMapRowWidth, cMapRowHeight)] retain];
 	m_mapview.showsUserLocation = YES;
 	m_mapview.scrollEnabled = NO;
 	m_mapview.zoomEnabled = NO;
+	m_mapview.realDelegate = self;
 	[m_mapview addAnnotation:m_bus];
 	[self recenterMap];
 	[m_bus addObserver:self forKeyPath:@"position" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:NULL];
@@ -71,6 +74,8 @@ const double cMapRowWidth = 300;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[g_Model removeObserver:self forKeyPath:@"followedBus"];
 	[m_bus removeObserver:self forKeyPath:@"position"];
+	[m_mapview release];
+	[m_followThisBusSwitch release];
 	[super viewDidUnload];
 }
 
@@ -86,12 +91,13 @@ const double cMapRowWidth = 300;
     [self.tableView setContentOffset:CGPointZero animated:NO];
 	self.title = [NSString stringWithFormat:NSLocalizedString(@"VehicleInfo", @"Vehicle ID Number format"), m_bus.ID];
 	
-	m_updatePositionUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePositionUpdateTime:) userInfo:nil repeats:YES];
+	m_updatePositionUpdateTimer = [[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updatePositionUpdateTime:) userInfo:nil repeats:YES] retain];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
 	[m_updatePositionUpdateTimer invalidate];
+	[m_updatePositionUpdateTimer release];
 	[super viewWillDisappear:animated];
 }
 
@@ -102,10 +108,10 @@ const double cMapRowWidth = 300;
 {
 	if ( [keyPath isEqual:@"followedBus"] )
 	{
-		if ( [change[NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeSetting )
+		if ( [[change objectForKey:NSKeyValueChangeKindKey] intValue] == NSKeyValueChangeSetting )
 		{
-			id newAnn = change[NSKeyValueChangeNewKey];
-			id previousAnn = change[NSKeyValueChangeOldKey];
+			id newAnn = [change objectForKey:NSKeyValueChangeNewKey];
+			id previousAnn = [change objectForKey:NSKeyValueChangeOldKey];
 			
 			if ( [m_bus isEqual:newAnn] || [m_bus isEqual:previousAnn] )
 			{
@@ -230,7 +236,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 	UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if ( cell == nil )
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
@@ -380,6 +386,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 			if ( viewController )
 			{
 				[[self navigationController] pushViewController:viewController animated:YES];
+				[viewController release];
 			}
             break;
 			
@@ -387,6 +394,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             break;
     }
 	
+}
+
+#pragma mark Bus Annotation Handlers
+- (MKAnnotationView*)annotationViewForBus:(Bus*)bus inMapView:(MKMapView*)mapView
+{
+	BusAnnotationView* bav = (BusAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:[BusAnnotationView reuseIdentifierForAnnotation:bus]];
+    if ( bav == nil )
+		bav = [[[BusAnnotationView alloc] initWithController:self bus:bus] autorelease];
+	return bav;
 }
 
 @end

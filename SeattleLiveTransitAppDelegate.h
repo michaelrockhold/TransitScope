@@ -49,21 +49,21 @@
 -(BOOL)isVisibleInMainMap:(Annotation*)ann;
 -(BOOL)isCloseToCurrentLocation:(Annotation*)ann;
 
-@property (weak, nonatomic, readonly)			NSString*		applicationSupportDirectory;
+@property (nonatomic, readonly)			NSString*		applicationSupportDirectory;
 
-@property (nonatomic, strong) IBOutlet	UIWindow*		window;
-@property (nonatomic, strong) IBOutlet	UITabBarController* rootTabBarController;
+@property (nonatomic, retain) IBOutlet	UIWindow*		window;
+@property (nonatomic, retain) IBOutlet	UITabBarController* rootTabBarController;
 
 @property (nonatomic)					BOOL			hideNewRoutesByDefault;
-@property (nonatomic, strong)			CLLocation*		currentLocation;
-@property (nonatomic, strong)			CLLocation*		centerOfMap;
-@property (nonatomic, strong)			Bus*			followedBus;
-@property (nonatomic, strong, readonly)	Route*			outOfService;
+@property (nonatomic, retain)			CLLocation*		currentLocation;
+@property (nonatomic, retain)			CLLocation*		centerOfMap;
+@property (nonatomic, retain)			Bus*			followedBus;
+@property (nonatomic, retain, readonly)	Route*			outOfService;
 
-@property (nonatomic, strong, readonly)	NSSet*			routes;
-@property (nonatomic, strong)			NSSet*			buses;
-@property (nonatomic, strong, readonly)	NSDictionary*	allPossibleRoutes;
+@property (nonatomic, retain, readonly)	NSSet*			routes;
+@property (nonatomic, retain)			NSSet*			buses;
+@property (nonatomic, retain, readonly)	NSDictionary*	allPossibleRoutes;
 
-@property (nonatomic, strong) IBOutlet	MapViewController* mapViewController;
+@property (nonatomic, retain) IBOutlet	MapViewController* mapViewController;
 
 @end
